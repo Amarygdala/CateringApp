@@ -2,5 +2,5 @@
 
 $dbUsername = "root";
 $dbPassword = "";
-$connection = mysqli_connect("localhost", $dbUsername, $dbPassword,"makeiris");
+$connection = mysqli_connect("localhost", $dbUsername, $dbPassword,"cateringapp");
 ?>

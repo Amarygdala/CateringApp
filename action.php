@@ -1,15 +1,23 @@
 <?php
 
-	include("C:\Users\Dshop\Desktop\maybexampp\htdocs\Iristestproject\connection.php");
+	include("C:\Users\Dshop\Desktop\maybexampp\htdocs\CateringApp\connection.php");
 
-	$sepal_lengp = $_POST["sepal_lengp"]??'';
-	$sepal_widthp = $_POST["sepal_widthp"]??'';
-	$petal_lengp = $_POST["petal_lengp"]??'';
-	$petal_widthp = $_POST["petal_widthp"]??'';
-	$flower_typep = $_POST["Flower_type"]??'';
-
-
-	$dbinsert = "INSERT INTO iris (Sepal_length, Sepal_width, Petal_length, Petal_width, Flower_type) VALUES ('$sepal_lengp', '$sepal_widthp', '$petal_lengp', '$petal_widthp', '$flower_typep');";
+	$date = $_POST["date"]??'';
+	$start_time = $_POST["start_time"]??'';
+	$end_time = $_POST["end_time"]??'';
+	$room = $_POST["room"]??'';
+	$delivery_time = $_POST["delivery_time"]??'';
+	$morning_break = $_POST["morning_break"]??'';
+	$afternoon_break = $_POST["afternoon_break"]??'';
+	$floor = $_POST["floor"]??'';
+	$attendees = $_POST["attendees"]??'';
+	$purpose = $_POST["purpose"]??'';
+	$restrictions = $_POST["restrictions"]??'';
+	$hot_cold = $_POST["hot_cold"]??'';
+	$drinks = $_POST["drinks"]??'';
+	$vendor = $_POST["vendor"]??'';
+	$food = $_POST["food"]??'';
+	$dbinsert = "INSERT INTO cateringdata (Date,StartTime,EndTime,Room,DeliveryTime,MorningBreak,AfternoonBreak,Floor,Attendees,Purpose,Restrictions,HotCold,Drinks,Vendor,Food) VALUES ('$date', '$start_time', '$end_time', '$room', '$delivery_time','$morning_break', '$afternoon_break', '$floor', '$attendees', '$purpose','$restrictions','$hot_cold', '$drinks', '$vendor', '$food');";
 
 	mysqli_query( $connection, $dbinsert ); 
-	header("Location: ../Iristestproject/index1.php?=success");
+	header("Location: ../CateringApp/form.php?=success");
