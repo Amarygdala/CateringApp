@@ -1,0 +1,54 @@
+html{
+	background-color: lightgrey;
+}
+
+.outbox{
+	font: 60px arial, sans-serif;
+	border: 2px solid black;
+	width: 1900px;
+	height:1000px;
+	color: black;
+	background-color: white;
+
+}
+#show{
+	border: 2px solid black;
+	width: 70%;
+	height:95%;
+	margin:10px 10px;
+	padding: 15px;
+	float: left;
+	border-radius: 10px;
+}
+#show h1{
+	font-size: 60px;
+	z-index: 5;
+	line-height: 2em;
+}
+#selector{
+
+	border: 2px solid black;
+	width: 24%;
+	height: 80%;
+	margin: 10px 10px;
+	padding:15px;
+	float: left;
+	overflow: auto;
+}
+#shrtcntt{
+	height: 30%;
+	width: 95%;
+	margin: 10px 10px;
+	border: 2px solid black;
+	color: white;
+	border-radius: 10px;
+}
+img[src="dshop-logo-small.png"]{
+	height: 100px;
+	width: 200px;
+	position: relative;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	padding-top: 20px;
+}

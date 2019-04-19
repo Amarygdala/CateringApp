@@ -1,0 +1,157 @@
+
+<style>
+aside, article, section, header, footer, nav {
+	display: block;
+}
+
+html, body {
+	margin: 0;
+	padding: 0;
+
+}
+html{
+	background: url(bg.jpg) no-repeat;
+	background-size: cover;
+}
+body{
+	background-color: rgba(135,206,250,0.2);
+	width: 700px;
+	margin: 2em auto 2em;
+	font: 100% Arial, Helvetica, sans-serif;
+	padding: 25px;
+}
+img{
+	width:40%;
+	height:40%;
+	position: inherit; 
+	left: 740px;
+	transform: translate(127%,0);
+}
+h1{
+	text-align: center;
+	border-bottom: 6px solid #FFCC66;
+	padding: 13px 0;
+	color: skyblue;
+}
+.formclass {
+	width: 80%;
+ 	border-radius: 5px;
+ 	transform: translate(3em);
+}
+.formclass input,select{
+	width: 100%;
+	border: 1px solid #ccc;
+	margin: 20px;
+	padding: 14px 15px;
+	box-sizing: border-box;
+	border-radius: 5px;
+	display: inline-block;
+	background: rgba(211,211,211,.5);
+
+}
+.formclass button{
+	width: 100%;
+	margin: 20px;
+	padding: 14px 15px;
+	box-sizing: border-box;
+	border-radius: 5px;
+	border: none;
+	background-color:  #4CAF50;
+	color: white;
+	font-size: 1em;
+
+}
+.formclass label{
+	color: skyblue;
+	font-size: 1.2em;
+}
+button[type=submit]:hover {
+  background-color: #45a049;
+  cursor: pointer;
+}
+
+.burger{
+  width: 4.1em;
+  height: 1.1em;
+  background-color: #3498DB;
+  color: white;
+  margin: 5px 0;
+  position: relative;
+  pointer-events: none;
+}
+.dropbtn{
+	background-color: transparent;
+	cursor: pointer;
+	width: 5em;
+	height: 5em;
+	border: none;
+	pointer-events: visible;
+}
+.menuContent{
+	display: none;
+	position: absolute;
+	background-color: #f1f1f1;
+	min-width: 160px;
+	z-index: 1;
+	pointer-events: visible;
+}
+.menuContent a{
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+	pointer-events: visible;
+
+}.menuContent a:hover{background-color: #ddd}.show{display:block;}
+
+#sidebar{
+	position: fixed;
+	width: 300px;
+	height: 100%;
+	background-color: white;
+	cursor: pointer;
+	left: -300px;
+}
+#sidebar.active{
+	left: 0px;
+}
+#sidebar a{
+	padding:15px 10px;
+	border-bottom: 1px solid grey;
+}
+#sidebar .togglebtn span{
+display: block;
+width: 4.1em;
+  height: 1.1em; 
+  background-color: #3498DB;
+  margin: 5px 0;
+
+}
+
+@media only screen and (min-width: 600px) and (max-width: 920px){
+	body{
+		width: 90%;
+	}
+}
+@media	only screen and (max-width: 599px){
+	html{
+	}
+	body{
+		width: 80%;
+
+	}
+	.formclass input,select{
+		margin: 10px;
+		transform: translate(-2em);
+	}
+	.formclass button{
+		margin: 10px;
+		transform: translate(-1.7em);
+	}
+	.formclass label{
+		position: relative;
+		right: 50px;
+
+	}
+
+}
