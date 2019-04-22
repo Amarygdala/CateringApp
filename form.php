@@ -74,7 +74,11 @@
     <label for="afternoon_break">Afternoon Break:</label>
     <input type= "time" name="afternoon_break">
     <label for="floor">Floor:</label>
-    <input type= "number" name="floor">
+    <select name="floor">
+		<option value="18">18</option>
+		<option value="19">19</option>
+		<option value="20">20</option>
+	</select>
     <label for="attendees">Number of Attendees:</label>
     <input type= "number" name="attendees">
     <label for="purpose">Purpose of Meeting:</label>

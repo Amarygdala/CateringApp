@@ -1,6 +1,6 @@
 <?php
 
-	include("C:\Users\Dshop\Desktop\maybexampp\htdocs\CateringApp\connection.php");
+	include("..\CateringApp\connection.php");
 
 	$date = $_POST["date"]??'';
 	$start_time = $_POST["start_time"]??'';

@@ -62,9 +62,10 @@
 
 table, th, td {
   border: 1px solid black;
-
 }
-
+table{
+	table-layout:fixed;
+}
 #datatable {
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   border-collapse: collapse;
@@ -76,8 +77,8 @@ table, th, td {
   border: 1px solid #ddd;
   padding: 8px;
 }
-#datatable tr{
-
+#datatable td{
+word-wrap:break-word;
 }
 
 #datatable tr:nth-child(even){background-color: #f2f2f2;}

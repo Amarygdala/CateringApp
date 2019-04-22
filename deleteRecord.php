@@ -11,7 +11,7 @@
 <div class="burger">
     <button onclick="dropFunction()" class="dropbtn"></button>
     <div id="dropMenu" class="menuContent">
-        <a href="index1.php">Form</a>
+        <a href="form.php">Form</a>
         <a href="showTable.php">Show Table</a>
         <a href="deleteRecord.php">Delete Record</a>
     </div>
@@ -48,9 +48,8 @@
 
 <?php
 
-	include("C:\Users\Dshop\Desktop\maybexampp\htdocs\Iristestproject\connection.php");
-    $sql = "SELECT * FROM iris;";
-    $sql1="SELECT * FROM iris WHERE Sepal_length = 5";
+	include("..\CateringApp\connection.php");
+    $sql = "SELECT * FROM cateringdata;";
     $result = mysqli_query( $connection, $sql );
 echo "<table id='datatable'>";
     $resultCheck = mysqli_num_rows($result);
@@ -58,9 +57,9 @@ echo "<table id='datatable'>";
 		header("Location:/Iristestproject/index1.php");
 	} //move back to form once deletion completes*/
     if($resultCheck>0){
-	    	echo "  <tr><th>ID</th><th>Sepal Length</th><th>Sepal Width</th><th>Petal Length</th><th>Petal Width</th><th>Flower Type</th></tr>";
+	    	echo "  <tr><th>Date</th><th>Start Time</th><th>End Time</th><th>Room</th><th>Delivery Time</th><th>Morning Break</th><th>Afternoon Break</th><th>Floor</th><th>Number of Attendees</th><th>Purpose</th><th>Restrictions</th><th>Hot or Cold</th><th>Drinks</th><th>Vendor</th><th>Food</th></tr>";
 	    while($all =mysqli_fetch_assoc($result) ){
-	        echo "<tr><td>" . $all['id'] . "</td><td>" . $all['Sepal_length'] . "</td><td>". $all['Sepal_width'] . "</td><td>". $all['Petal_length'] . "</td><td>". $all['Petal_width'] . "</td><td>". $all['Flower_type'] . "</td></tr>"; 
+	        echo "<tr><td>" . $all['Date'] . "</td><td>" . $all['StartTime'] . "</td><td>". $all['EndTime'] . "</td><td>". $all['Room'] . "</td><td>". $all['DeliveryTime'] . "</td><td>". $all['MorningBreak'] . "</td><td>" .$all['AfternoonBreak'] . "</td><td>".$all['Floor'] . "</td><td>".$all['Attendees'] . "</td><td>".$all['Purpose'] . "</td><td>".$all['Restrictions'] . "</td><td>".$all['HotCold'] . "</td><td>".$all['Drinks'] . "</td><td>". $all['Vendor'] . "</td><td>". $all['Food'] . "</td><td>".  "</td></tr>"; 
 }
 
 echo "</table>"; //Close the table in HTML
@@ -68,7 +67,7 @@ echo "</table>"; //Close the table in HTML
 	}
 
 	$deleteID=$_POST['ID']??'';
-	$dbDelete = "DELETE FROM `iris` WHERE `iris`.`id` = $deleteID";
+	$dbDelete = "DELETE FROM `cateringdata` WHERE `cateringdata`.`ID` = $deleteID";
 	mysqli_query( $connection, $dbDelete); 
 
 

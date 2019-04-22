@@ -103,7 +103,7 @@ button[type=submit]:hover {
 	pointer-events: visible;
 
 }.menuContent a:hover{background-color: #ddd}.show{display:block;}
-
+/*
 #sidebar{
 	position: fixed;
 	width: 300px;
@@ -127,7 +127,9 @@ width: 4.1em;
   margin: 5px 0;
 
 }
-
+sidebar
+*/
+select option[value="aroma"]{background-image: url(sap.png);}
 @media only screen and (min-width: 600px) and (max-width: 920px){
 	body{
 		width: 90%;
