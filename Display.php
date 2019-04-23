@@ -8,11 +8,18 @@
 	<title></title>
 </head>
 <body>
-	
+<?php
+	include("..\CateringApp\connection.php");
+	//date query
+    $sql="SELECT DATE_FORMAT(Date, '%b %e, %Y') FROM cateringdata ORDER BY ID DESC LIMIT 0, 1;";
+    $result = mysqli_query( $connection, $sql);
+    $all =mysqli_fetch_assoc($result);
+    echo $all["DATE_FORMAT(Date, '%b %e, %Y')"];
+?>
 <div class="outbox">
 	<div id="show">
 		<h1>Current Activity</h1>
-		<?php?>
+		<?php  ?>
 		<h1>Main Description</h1>
 		<?php?>
 		<h1>Caterer</h1>

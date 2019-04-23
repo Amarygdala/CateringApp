@@ -57,7 +57,7 @@
 
 <form action="action.php" method="POST">
 
-   	<h1>Catering Form</h1> 
+   	<h1>SAP Catering Form</h1> 
 <div class="formclass">
     <label for="date">Date:</label>
     <input type= "date" name="date">
