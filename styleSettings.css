@@ -2,12 +2,12 @@ body{
 	font: 25px Arial, Helvetica, sans-serif;
 	height: 800px;
 	width: 1000px;
-	margin: 150px auto;
+	margin: 20px auto;
 	padding: 30px;
 	border: 1px solid black;
 	border-radius: 25px;
 	box-shadow: 10px 10px 8px 10px #888888;
-	position: 	relative;	
+	position: relative;	
 	padding-top: 200px;
 }
 img[src="dshop-logo-small.png"]{
@@ -33,7 +33,14 @@ h2{
 	width: 100px;
 }
 .button2{
-	height: 50px;
+  position: absolute; 
+  bottom: 30px;
+  right:  150px;
+  height: 50px;
+  width: 100px;
+}
+.button3{
+  height: 50px;
 }
 .switch {
   position: relative;

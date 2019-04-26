@@ -6,9 +6,10 @@
         <meta name="viewport" content="width=device-width,initial-scale=1.0">
 		<title>SAP Catering</title>
 		<link rel="stylesheet" href="style.css">
-        
+        <link rel="stylesheet" href="globalStyle.css">
     </head>
 	<body>
+        <img src="usericon.png" class="usericon">
 <!-- Side bar incomplete
 <div id="sidebar">
     <div class="togglebtn" onclick="toggleSidebar()">
@@ -83,33 +84,33 @@
     <input type= "number" name="attendees">
     <label for="purpose">Purpose of Meeting:</label>
         <select name="purpose">
-    	<option value="external">External</option>
-    	<option value="internal">Internal</option>
+    	<option value="External">External</option>
+    	<option value="Internal">Internal</option>
 		</select>
 	<label for="restrictions">Restrictions:</label>
 	<input type="text" name="restrictions">
     <label for="hot_cold">Cold/Hot:</label>
         <select name="hot_cold">
-    	<option value="cold">Cold</option>
-    	<option value="hot">Hot</option>
+    	<option value="Cold">Cold</option>
+    	<option value="Hot">Hot</option>
 		</select>
 	<label for="drinks">Drinks(Coffee,Water,Tea,Juice,Pop):</label>
 	<input type="text" name="drinks">
     <label for="vendor">Vendor:</label>
         <select name="vendor">
-			<option value="aroma">Aroma</option>
-			<option value="burger_king">Burger King</option>
-			<option value="druxys">Druxys</option>
-			<option value="eggsmart">Eggsmart</option>
-			<option value="iq_restaurants">IQ Restaurants</option>
-			<option value="jimmy_the_greek">Jimmy the Greek</option>
-			<option value="la_prep">La Prep</option>
-			<option value="longos">Longos</option>
-			<option value="mcdonalds">McDonalds</option>
-			<option value="mcewans">McEwans</option>
-			<option value="nofrills">Nofrills</option>
-			<option value="soup_nutsy">Soup Nutsy</option>
-			<option value="tim_hortons">Tim Hortons</option>
+			<option value="Aroma">Aroma</option>
+			<option value="Burger King">Burger King</option>
+			<option value="Druxys">Druxys</option>
+			<option value="Eggsmart">Eggsmart</option>
+			<option value="IQ Restaurants">IQ Restaurants</option>
+			<option value="Jimmy the Greek">Jimmy the Greek</option>
+			<option value="La Prep">La Prep</option>
+			<option value="Longos">Longos</option>
+			<option value="McDonalds">McDonalds</option>
+			<option value="McEwans">McEwans</option>
+			<option value="Nofrills">Nofrills</option>
+			<option value="Soup Nutsy">Soup Nutsy</option>
+			<option value="Tim Hortons">Tim Hortons</option>
 		</select>
 	<label for="food">Food</label>
 	<input type="text" name="food">
@@ -119,5 +120,5 @@
 
 </div>
 </body>
-<img src="sap.png">
+<img src="sap.png" class="sapimage">
 </html>

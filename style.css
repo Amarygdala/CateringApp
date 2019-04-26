@@ -20,12 +20,18 @@ body{
 	font: 100% Arial, Helvetica, sans-serif;
 	padding: 25px;
 }
-img{
+.sapimage{
 	width:40%;
 	height:40%;
 	position: inherit; 
 	left: 740px;
 	transform: translate(127%,0);
+}
+.usericon{
+	float: right;
+	height: 80px;
+	width: 100px;
+
 }
 h1{
 	text-align: center;

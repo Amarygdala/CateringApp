@@ -1,32 +1,91 @@
 html{
 	background-color: lightgrey;
 }
+/* Style the header with a grey background and some padding */
+.header {
+	height: 80px;
+	overflow: hidden;
+	background-color: #333;
+	padding: 20px 10px;
+	margin: 0;
+	color: white;
+}
 
-.outbox{
-	font: 60px arial, sans-serif;
-	border: 2px solid black;
-	width: 1900px;
-	height:1000px;
-	color: black;
-	background-color: white;
+/* Style the header links */
+.header .header-right a {
+  color: black;
+  text-align: center;
+  padding: 15px;
+  text-decoration: none;
+  font-size: 18px; 
+  line-height: 30px;
+  border-radius: 4px;
+}
+.header .header-right button[value="Refresh Page"]{
+	box-shadow: 0;
+  	height: 50px;
+	width:100px;
+	color: white;
+	border-color: dodgerblue;
+	background-color: dodgerblue ;
+	font-size: 18px; 
+	line-height: 30px;
+	border-radius: 4px;
+}
+/* Style the active/current link*/
+.header a.active {
+  background-color: dodgerblue;
+  color: white;
+}
+
+/* Float the link section to the right */
+.header-right {
+  float: right;
 
 }
-#show{
+
+/* Add media queries for responsiveness - when the screen is 500px wide or less, stack the links on top of each other */ 
+@media screen and (max-width: 500px) {
+  .header a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  .header-right {
+    float: none;
+  }
+}
+.outbox{
+	font: 30px arial, sans-serif;
+	border: 2px solid black;
+	width: 1880px;
+	height:980px;
+	color: black;
+	background-color: white;
+}
+.show{
 	border: 2px solid black;
 	width: 70%;
-	height:95%;
+	height:94%;
 	margin:10px 10px;
 	padding: 15px;
 	float: left;
 	border-radius: 10px;
 }
-#show h1{
-	font-size: 60px;
+.show h1{
+	font-size: 45px;
+	margin: 0;
 	z-index: 5;
-	line-height: 2em;
-}
-#selector{
 
+}
+.show div{
+	height: 100px;
+	width: 49%;
+	margin: 10px 5px;
+	float: left;
+}
+
+#selector{
 	border: 2px solid black;
 	width: 24%;
 	height: 80%;
@@ -37,12 +96,20 @@ html{
 }
 #shrtcntt{
 	height: 30%;
-	width: 95%;
+	width: 90%;
 	margin: 10px 10px;
 	border: 2px solid black;
-	color: white;
+	color: black;
 	border-radius: 10px;
+	padding:15px;
+	font-size: 	35px;
+
 }
+#shrtcntt h1{
+	margin:0;
+	font-size: 	1em;
+}
+
 img[src="dshop-logo-small.png"]{
 	height: 100px;
 	width: 200px;
