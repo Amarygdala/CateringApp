@@ -3,14 +3,13 @@ html{
 }
 /* Style the header with a grey background and some padding */
 .header {
-	height: 80px;
+	height: 100px;
 	overflow: hidden;
 	background-color: #333;
 	padding: 20px 10px;
 	margin: 0;
 	color: white;
 }
-
 /* Style the header links */
 .header .header-right a {
   color: black;
@@ -20,17 +19,17 @@ html{
   font-size: 18px; 
   line-height: 30px;
   border-radius: 4px;
+
 }
 .header .header-right button[value="Refresh Page"]{
-	box-shadow: 0;
   	height: 50px;
 	width:100px;
 	color: white;
 	border-color: dodgerblue;
 	background-color: dodgerblue ;
 	font-size: 18px; 
-	line-height: 30px;
 	border-radius: 4px;
+
 }
 /* Style the active/current link*/
 .header a.active {
@@ -44,6 +43,9 @@ html{
 
 }
 
+p[id="dateTime"]{
+	position: absolute;
+}
 /* Add media queries for responsiveness - when the screen is 500px wide or less, stack the links on top of each other */ 
 @media screen and (max-width: 500px) {
   .header a {
@@ -103,6 +105,7 @@ html{
 	border-radius: 10px;
 	padding:15px;
 	font-size: 	35px;
+	line-height: 50px;
 
 }
 #shrtcntt h1{

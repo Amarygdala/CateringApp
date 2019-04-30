@@ -24,7 +24,6 @@ body{
 	width:40%;
 	height:40%;
 	position: inherit; 
-	left: 740px;
 	transform: translate(127%,0);
 }
 .usericon{
@@ -135,7 +134,6 @@ width: 4.1em;
 }
 sidebar
 */
-select option[value="aroma"]{background-image: url(sap.png);}
 @media only screen and (min-width: 600px) and (max-width: 920px){
 	body{
 		width: 90%;
@@ -148,11 +146,15 @@ select option[value="aroma"]{background-image: url(sap.png);}
 		width: 80%;
 
 	}
-	.formclass input,select{
+	.formclass input{
 		margin: 10px;
 		transform: translate(-2em);
 	}
-	.formclass button{
+	.formclass select{
+		margin: 10px;
+		transform: translate(-2em);
+	}
+	.formclass button[type="submit"]{
 		margin: 10px;
 		transform: translate(-1.7em);
 	}
@@ -162,4 +164,65 @@ select option[value="aroma"]{background-image: url(sap.png);}
 
 	}
 
+}
+@media only screen and (min-width: 921px){
+	body{
+		width: 980px;
+	}
+	.formclass {
+		float: left;
+		width: 100%;
+	 	border-radius: 5px;
+	 	transform: translate(3em);
+
+}
+.formclass input{
+	width: 35%;
+	border: 1px solid #ccc;
+	margin: 20px;
+	padding: 14px 15px;
+	box-sizing: border-box;
+	border-radius: 5px;
+	display: inline-block;
+	background: rgba(211,211,211,.5);
+	margin-right: 13%;
+
+}
+.formclass select{
+	width: 35%;
+	border: 1px solid #ccc;
+	margin: 20px;
+	padding: 14px 15px;
+	box-sizing: border-box;
+	border-radius: 5px;
+	display: inline-block;
+	background: rgba(211,211,211,.5);
+}
+.formclass input[name="delivery_time"], input[name="end_time"],input[name="morning_break"]{
+/*this is for the right side that gets pushed if margin not 0*/
+	margin: 20px 0 20px 20px;
+}
+.formclass button[type="submit"]{
+	width: 85%;
+	margin: 20px;
+	padding: 14px 15px;
+	box-sizing: border-box;
+	border-radius: 5px;
+	border: none;
+	background-color:  #4CAF50;
+	color: white;
+	font-size: 1em;
+ 
+
+}
+.formclass label{
+	color: skyblue;
+	font-size: 1.2em;
+	position: absolute;
+}
+.sapimage{
+	height: 15%;
+	width: 15%;
+	transform: translate(0,0);
+}
 }

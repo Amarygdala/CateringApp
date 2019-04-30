@@ -38,23 +38,7 @@
 <div class="burger"></div>
 <div class="burger"></div>
 
-<script type="text/javascript">
-    function dropFunction(){
-        document.getElementById("dropMenu").classList.toggle("show");
-    }
-    window.onclick = function(event){
-        if (!event.target.matches('.dropbtn')) {
-            var dropdowns = document.getElementsByClassName("menuContent");
-            var i;
-            for(i=0;i<dropdowns.length;i++){
-                var openDropdown=dropdowns[i];
-                if(openDropdown.classList.contains('show')){
-                    openDropdown.classList.remove('show');
-                }
-            }
-        }
-    }
-</script>
+<script src="burger.js"></script>
 
 <form action="action.php" method="POST">
 
@@ -62,16 +46,16 @@
 <div class="formclass">
     <label for="date">Date:</label>
     <input type= "date" name="date">
-    <label for="start_time">Time(Start to end):</label>
+    <label for="delivery_time">Catering Delivery Time:</label>
+    <input type="time" name="delivery_time"></br>
+    <label for="start_time">Time(Start):</label>
     <input type= "time" name="start_time">
-    <label for="end_time"></label>
-    <input type= "time" name="end_time">
+    <label for="end_time">Time(End):</label>
+    <input type= "time" name="end_time"></br>
     <label for="room">Room:</label>
     <input type= "text" name="room">
-    <label for="delivery_time">Catering Delivery Time:</label>
-    <input type="time" name="delivery_time">
     <label for="morning_break">Morning Break:</label>
-    <input type= "time" name="morning_break">
+    <input type= "time" name="morning_break"></br>
     <label for="afternoon_break">Afternoon Break:</label>
     <input type= "time" name="afternoon_break">
     <label for="floor">Floor:</label>
@@ -79,21 +63,21 @@
 		<option value="18">18</option>
 		<option value="19">19</option>
 		<option value="20">20</option>
-	</select>
+	</select></br>
     <label for="attendees">Number of Attendees:</label>
     <input type= "number" name="attendees">
     <label for="purpose">Purpose of Meeting:</label>
         <select name="purpose">
     	<option value="External">External</option>
     	<option value="Internal">Internal</option>
-		</select>
+		</select></br>
 	<label for="restrictions">Restrictions:</label>
 	<input type="text" name="restrictions">
     <label for="hot_cold">Cold/Hot:</label>
         <select name="hot_cold">
     	<option value="Cold">Cold</option>
     	<option value="Hot">Hot</option>
-		</select>
+		</select></br>
 	<label for="drinks">Drinks(Coffee,Water,Tea,Juice,Pop):</label>
 	<input type="text" name="drinks">
     <label for="vendor">Vendor:</label>
@@ -111,14 +95,13 @@
 			<option value="Nofrills">Nofrills</option>
 			<option value="Soup Nutsy">Soup Nutsy</option>
 			<option value="Tim Hortons">Tim Hortons</option>
-		</select>
-	<label for="food">Food</label>
+		</select></br>
+	<label for="food">Food:</label>
 	<input type="text" name="food">
     <button type="submit">Submit</button>
 
 </form>
-
 </div>
-</body>
 <img src="sap.png" class="sapimage">
+</body>
 </html>
