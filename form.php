@@ -1,6 +1,13 @@
+<?php
+session_start();
+if(!isset($_SESSION['userId']))
+{
+    header('Location: ../CateringApp/login_page.php');
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html>
-
 	<head>
 		<meta charset="utf-8">
         <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -45,16 +52,16 @@
    	<h1>SAP Catering Form</h1> 
 <div class="formclass">
     <label for="date">Date:</label>
-    <input type= "date" name="date">
+    <input type= "date" name="date" required="required">
     <label for="delivery_time">Catering Delivery Time:</label>
-    <input type="time" name="delivery_time"></br>
+    <input type="time" name="delivery_time" required="required"></br>
     <label for="start_time">Time(Start):</label>
-    <input type= "time" name="start_time">
+    <input type= "time" name="start_time" required="required">
     <label for="end_time">Time(End):</label>
-    <input type= "time" name="end_time"></br>
+    <input type= "time" name="end_time" required="required"></br>
     <label for="room">Room:</label>
-    <input type= "text" name="room">
-    <label for="morning_break">Morning Break:</label>
+    <input type= "text" name="room" required="required">
+    <label for="morning_break" >Morning Break:</label>
     <input type= "time" name="morning_break"></br>
     <label for="afternoon_break">Afternoon Break:</label>
     <input type= "time" name="afternoon_break">
@@ -65,7 +72,7 @@
 		<option value="20">20</option>
 	</select></br>
     <label for="attendees">Number of Attendees:</label>
-    <input type= "number" name="attendees">
+    <input type= "number" name="attendees" required="required">
     <label for="purpose">Purpose of Meeting:</label>
         <select name="purpose">
     	<option value="External">External</option>

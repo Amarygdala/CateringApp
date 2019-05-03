@@ -1,3 +1,11 @@
+<?php
+session_start();
+if(!isset($_SESSION['userId']))
+{
+    header('Location: ../CateringApp/login_page.php');
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,8 +14,9 @@
 </head>
 <body>
 	<img src="dshop-logo-small.png">
-	
-<button class="button button1">Logout</button> 
+<form action="/CateringApp/logout.php" method="post">
+<button class="button button1" name="logout-submit">Logout</button> 
+</form>
 <form action="../CateringApp/Display.php">
 <button class="button button2">Back to Display</button> 
 </form>

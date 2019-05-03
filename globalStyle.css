@@ -23,5 +23,5 @@ input,select{
 	border-radius: 5px;
 	display: inline-block;
 	background: rgba(211,211,211,.5);
-
+	font-size: 1em;
 }

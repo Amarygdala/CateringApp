@@ -1,3 +1,10 @@
+<?php
+session_start();
+    if (!isset($_SESSION['userUid'])||$_SESSION['userUid']!=="dshop") {
+        header('Location: ../CateringApp/login_page.php?error=noaccess');
+        exit();
+    }
+?>
 <html>
 <header>
 <link rel="stylesheet" href="styletable.css">
@@ -37,9 +44,6 @@
     $result = mysqli_query( $connection, $sql );
 echo "<table id='datatable'>";
     $resultCheck = mysqli_num_rows($result);
-	/*if(isset($_POST['ID'])){
-		header("Location:/Iristestproject/index1.php");
-	} //move back to form once deletion completes*/
     if($resultCheck>0){
 	    	echo "  <tr><th>ID</th><th>Date</th><th>Start Time</th><th>End Time</th><th>Room</th><th>Delivery Time</th><th>Morning Break</th><th>Afternoon Break</th><th>Floor</th><th>Number of Attendees</th><th>Purpose</th><th>Restrictions</th><th>Hot or Cold</th><th>Drinks</th><th>Vendor</th><th>Food</th></tr>";
 	    while($all =mysqli_fetch_assoc($result) ){
@@ -51,7 +55,7 @@ echo "</table>"; //Close the table in HTML
 	}
 
 	$deleteID=$_POST['ID']??'';
-	$dbDelete = "DELETE FROM `cateringdata` WHERE `cateringdata`.`ID` = $deleteID";
+	$dbDelete = "DELETE FROM `cateringdata` WHERE `cateringdata`.`ID` = $deleteID";//` quotations are needed for SQL
 	mysqli_query( $connection, $dbDelete); 
 
 

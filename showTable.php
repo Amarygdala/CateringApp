@@ -1,3 +1,11 @@
+<?php
+session_start();
+if(!isset($_SESSION['userId']))
+{
+    header('Location: ../CateringApp/login_page.php');
+    exit();
+}
+?>
 <html>
 <header>
 <link rel="stylesheet" href="styletable.css">

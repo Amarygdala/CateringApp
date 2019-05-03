@@ -1,4 +1,11 @@
-
+<?php
+session_start();
+if(!isset($_SESSION['userId']))
+{
+    header('Location: ../CateringApp/login_page.php');
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,6 +13,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
 	<link rel="stylesheet" href="DisplayStyle.css">
 	<link rel="stylesheet" href="globalStyle.css">
+	<meta http-equiv="refresh" content="300">
 	<title></title>
 </head>
 <body>
