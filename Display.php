@@ -1,11 +1,4 @@
-<?php
-session_start();
-if(!isset($_SESSION['userId']))
-{
-    header('Location: ../CateringApp/login_page.php');
-    exit();
-}
-?>
+
 <!DOCTYPE html>
 <html>
 <head>

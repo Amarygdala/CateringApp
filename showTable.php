@@ -1,10 +1,5 @@
 <?php
-session_start();
-if(!isset($_SESSION['userId']))
-{
-    header('Location: ../CateringApp/login_page.php');
-    exit();
-}
+require "reqUser.php";
 ?>
 <html>
 <header>

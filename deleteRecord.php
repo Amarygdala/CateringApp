@@ -1,19 +1,14 @@
 <?php
-session_start();
-    if (!isset($_SESSION['userUid'])||$_SESSION['userUid']!=="dshop") {
-        header('Location: ../CateringApp/login_page.php?error=noaccess');
-        exit();
-    }
+require "reqAdmin.php";
 ?>
 <html>
 <header>
+    <link rel="stylesheet" href="globalStyle.css">
 <link rel="stylesheet" href="styletable.css">
-<link rel="stylesheet" href="globalStyle.css">
 </header>
 <body>
 
-<div class=box></div>
-<div id="sidebar"></div>
+
 <div class="burgerTOP">
 <div class="burger">
     <button onclick="dropFunction()" class="dropbtn"></button>

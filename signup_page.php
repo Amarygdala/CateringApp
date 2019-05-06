@@ -1,9 +1,5 @@
 <?php
- session_start();
- 	if (!isset($_SESSION['userUid'])||$_SESSION['userUid']!=="dshop") {
- 		header('Location: ../CateringApp/login_page.php?error=noaccess');
-    	exit();
- 	}
+require "reqAdmin.php";
 ?>
 <main>
 		<link rel="stylesheet" type="text/css" href="globalStyle.css">

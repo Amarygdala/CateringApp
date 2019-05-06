@@ -10,13 +10,13 @@ h1{
 body{
 	background-color: rgba(135,206,250,0.2);
 	width: 21em;
-	margin: 2em auto 2em;
+	margin:auto auto;
 	font: 100% Arial, Helvetica, sans-serif;
-	height: 100%;
+
 
 }
 .wrapper{ 
-	margin: 100% 0;
+	margin: 55% 0;
 
 }
 input,button[type="submit"]{

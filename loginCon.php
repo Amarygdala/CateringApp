@@ -22,7 +22,7 @@ if(isset($_POST['login-submit'])){
 			if($row=mysqli_fetch_assoc($result)){
 				$pwdCheck=password_verify($password, $row['upwd']);
 				if ($pwdCheck==false) {
-					header("Location:../CateringApp/login_page.php?error=wrongpwd");//change to username or password not found.
+					header("Location:../CateringApp/login_page.php?error=userorpwd");
 					exit();
 				}else if($pwdCheck==true){
 					session_start();
@@ -40,7 +40,7 @@ if(isset($_POST['login-submit'])){
 					exit();
 				}
 			}else{
-				header("Location:../CateringApp/login_page.php?error=usernamenotfound");//change to username or password not found.
+				header("Location:../CateringApp/login_page.php?error=userorpwd");
 				exit();
 			}
 		}
