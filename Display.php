@@ -3,22 +3,25 @@
 <html>
 <head>
 	<meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
 	<link rel="stylesheet" href="DisplayStyle.css">
 	<link rel="stylesheet" href="globalStyle.css">
+	<script src="displayJS.js"></script>
 	<meta http-equiv="refresh" content="300">
 	<title></title>
 </head>
 <body>
 <!-- Below is main display -->
+<!-- MAKE SORT BY DATE GET DATE COLUMN MAKE SURE DATE IN DATABASE IS DATE TYPE-->
 <?php
 	include("..\CateringApp\connection.php");
-	$all=mysqli_fetch_assoc(mysqli_query( $connection, "SELECT * FROM cateringdata ORDER BY ID DESC LIMIT 0, 1;"));
+	$showNum = $_POST['shrtNum'];
+	$all=mysqli_fetch_assoc(mysqli_query( $connection, "SELECT * FROM cateringdata ORDER BY date DESC LIMIT $showNum, 1;"));
 ?>
 <div class="header">
 	  <div class="header-right">
 	  		<a class="active" href="../CateringApp/Settings.php">Settings</a>
-	  		<button value="Refresh Page" onClick="window.location.reload()">Refresh</button> 
+	  		<button value="Refresh Page" onClick="window.location.reload()">Refresh</button>
 	  		</br>
 	  		<p id="dateTime"></p>
 	  		<script> let d = new Date(); document.getElementById("dateTime").innerHTML ="Last Refreshed:"+ d;</script>
@@ -30,20 +33,20 @@
 	<div id="DateID">
 		<h1>Date</h1>
 <?php
-    $resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(Date, '%b %e, %Y') FROM cateringdata ORDER BY ID DESC LIMIT 0, 1;");
+    $resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(Date, '%b %e, %Y') FROM cateringdata ORDER BY date DESC LIMIT $showNum, 1;");
     $allT =mysqli_fetch_assoc($resultT);
     echo $allT["DATE_FORMAT(Date, '%b %e, %Y')"];
     ?>
 </div>
-	
+
 	<div id="TimeID">
 		<h1>Time(start to end)</h1>
-		<?php 
-	$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(StartTime, '%h:%i %p') FROM cateringdata ORDER BY ID DESC LIMIT 0, 1;");
+		<?php
+	$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(StartTime, '%h:%i %p') FROM cateringdata ORDER BY date DESC LIMIT $showNum, 1;");
 	$allT =mysqli_fetch_assoc($resultT);
 	echo $allT["DATE_FORMAT(StartTime, '%h:%i %p')"];
 	echo " to ";
-	$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(EndTime, '%h:%i %p') FROM cateringdata ORDER BY ID DESC LIMIT 0, 1;");
+	$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(EndTime, '%h:%i %p') FROM cateringdata ORDER BY date DESC LIMIT $showNum, 1;");
 	$allT =mysqli_fetch_assoc($resultT);
 	echo $allT["DATE_FORMAT(EndTime, '%h:%i %p')"];
     ?>
@@ -51,7 +54,7 @@
 	<div id="dTimeID">
 		<h1>Delivery Time</h1>
 	<?php
-	$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(EndTime, '%h:%i %p') FROM cateringdata ORDER BY ID DESC LIMIT 0, 1;");
+	$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(EndTime, '%h:%i %p') FROM cateringdata ORDER BY date DESC LIMIT $showNum, 1;");
 	$allT =mysqli_fetch_assoc($resultT);
 	echo $allT["DATE_FORMAT(EndTime, '%h:%i %p')"];
 	?>
@@ -60,7 +63,7 @@
 <div id="MBreakID">
 	<h1>Morning Break</h1>
 	<?php
-	$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(EndTime, '%h:%i %p') FROM cateringdata ORDER BY ID DESC LIMIT 0, 1;");
+	$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(EndTime, '%h:%i %p') FROM cateringdata ORDER BY date DESC LIMIT $showNum, 1;");
 	$allT =mysqli_fetch_assoc($resultT);
 	echo $allT["DATE_FORMAT(EndTime, '%h:%i %p')"];
 	?>
@@ -69,7 +72,7 @@
 <div id="ABreakID">
 	<h1>Afternoon Break</h1>
 	<?php
-	$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(EndTime, '%h:%i %p') FROM cateringdata ORDER BY ID DESC LIMIT 0, 1;");
+	$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(EndTime, '%h:%i %p') FROM cateringdata ORDER BY date DESC LIMIT $showNum, 1;");
 	$allT =mysqli_fetch_assoc($resultT);
 	echo $allT["DATE_FORMAT(EndTime, '%h:%i %p')"];
 	?>
@@ -78,7 +81,7 @@
 	<div id="RoomID">
 		<h1>Room</h1>
 	<?php
-		echo $all["Room"]; 
+		echo $all["Room"];
 	?>
 	</div>
 
@@ -86,55 +89,55 @@
 	<div id="FloorID">
 		<h1>Floor</h1>
 		<?php
-		echo $all["Floor"]; 
+		echo $all["Floor"];
 		?>
 </div>
 
 	<div id="AttendeesID">
 		<h1>Number of Attendees</h1>
 		<?php
-		echo $all["Attendees"]. " people"; 
+		echo $all["Attendees"]. " people";
 		?>
 </div>
 
 	<div id="PurposeID">
 		<h1>Purpose</h1>
 		<?php
-		echo $all["Purpose"]; 
+		echo $all["Purpose"];
 		?>
 </div>
 
 	<div id="RestrictionsID">
 		<h1>Restrictions</h1>
 		<?php
-		echo $all["Restrictions"]; 
+		echo $all["Restrictions"];
 		?>
 </div>
 
 	<div id="HotColdID">
 		<h1>Hot/Cold</h1>
 		<?php
-		echo $all["HotCold"]; 
+		echo $all["HotCold"];
 		?>
 </div>
 
 	<div id="DrinksID">
 		<h1>Drinks</h1>
 		<?php
-		echo $all["Drinks"]; 
+		echo $all["Drinks"];
 		?>
 </div>
 
 	<div id="VendorID">
 		<h1>Vendor</h1>
 		<?php
-		echo $all["Vendor"]; 
+		echo $all["Vendor"];
 		?>
 </div>
 	<div id="FoodID">
 		<h1>Food</h1>
 		<?php
-		echo $all["Food"]; 
+		echo $all["Food"];
 		?>
 </div>
 
@@ -143,131 +146,148 @@
 <!-- Below is right sidebar for short description content -->
 
 	<div id="selector">
-		<div id="shrtcntt">
+		<div class="shrtcntt shrtcntt0">
 			<?php
 				echo"<h1>Date:</h1>";
-				$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(Date, '%b %e, %Y') FROM cateringdata ORDER BY ID DESC LIMIT 1, 1;");
+				$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(Date, '%b %e, %Y') FROM cateringdata ORDER BY date DESC LIMIT 0, 1;");
 		    	$allT =mysqli_fetch_assoc($resultT);
 		    	echo $allT["DATE_FORMAT(Date, '%b %e, %Y')"];
 				echo"<h1>Time:</h1>";
-				$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(StartTime, '%h:%i %p') FROM cateringdata ORDER BY ID DESC LIMIT 1, 1;");
+				$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(StartTime, '%h:%i %p') FROM cateringdata ORDER BY date DESC LIMIT 0, 1;");
 				$allT =mysqli_fetch_assoc($resultT);
 				echo $allT["DATE_FORMAT(StartTime, '%h:%i %p')"];
 				echo " to ";
-				$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(EndTime, '%h:%i %p') FROM cateringdata ORDER BY ID DESC LIMIT 1, 1;");
+				$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(EndTime, '%h:%i %p') FROM cateringdata ORDER BY date DESC LIMIT 0, 1;");
 				$allT =mysqli_fetch_assoc($resultT);
 				echo $allT["DATE_FORMAT(EndTime, '%h:%i %p')"];
 			?>
 
 		</div>
-		<div id="shrtcntt">
+		<div class="shrtcntt shrtcntt1">
 			<?php
 				echo"<h1>Date:</h1>";
-				$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(Date, '%b %e, %Y') FROM cateringdata ORDER BY ID DESC LIMIT 2, 1;");
+				$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(Date, '%b %e, %Y') FROM cateringdata ORDER BY date DESC LIMIT 1, 1;");
 		    	$allT =mysqli_fetch_assoc($resultT);
 		    	echo $allT["DATE_FORMAT(Date, '%b %e, %Y')"];
 				echo"<h1>Time:</h1>";
-				$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(StartTime, '%h:%i %p') FROM cateringdata ORDER BY ID DESC LIMIT 2, 1;");
+				$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(StartTime, '%h:%i %p') FROM cateringdata ORDER BY date DESC LIMIT 1, 1;");
 				$allT =mysqli_fetch_assoc($resultT);
 				echo $allT["DATE_FORMAT(StartTime, '%h:%i %p')"];
 				echo " to ";
-				$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(EndTime, '%h:%i %p') FROM cateringdata ORDER BY ID DESC LIMIT 2, 1;");
+				$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(EndTime, '%h:%i %p') FROM cateringdata ORDER BY date DESC LIMIT 1, 1;");
+				$allT =mysqli_fetch_assoc($resultT);
+				echo $allT["DATE_FORMAT(EndTime, '%h:%i %p')"];
+			?>
+
+		</div>
+		<div class="shrtcntt shrtcntt2">
+			<?php
+				echo"<h1>Date:</h1>";
+				$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(Date, '%b %e, %Y') FROM cateringdata ORDER BY date DESC LIMIT 2, 1;");
+		    	$allT =mysqli_fetch_assoc($resultT);
+		    	echo $allT["DATE_FORMAT(Date, '%b %e, %Y')"];
+				echo"<h1>Time:</h1>";
+				$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(StartTime, '%h:%i %p') FROM cateringdata ORDER BY date DESC LIMIT 2, 1;");
+				$allT =mysqli_fetch_assoc($resultT);
+				echo $allT["DATE_FORMAT(StartTime, '%h:%i %p')"];
+				echo " to ";
+				$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(EndTime, '%h:%i %p') FROM cateringdata ORDER BY date DESC LIMIT 2, 1;");
 				$allT =mysqli_fetch_assoc($resultT);
 				echo $allT["DATE_FORMAT(EndTime, '%h:%i %p')"];
 			?>
 		</div>
-		<div id="shrtcntt">
+		<div class="shrtcntt shrtcntt3">
 			<?php
 				echo"<h1>Date:</h1>";
-				$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(Date, '%b %e, %Y') FROM cateringdata ORDER BY ID DESC LIMIT 3, 1;");
+				$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(Date, '%b %e, %Y') FROM cateringdata ORDER BY date DESC LIMIT 3, 1;");
 		    	$allT =mysqli_fetch_assoc($resultT);
 		    	echo $allT["DATE_FORMAT(Date, '%b %e, %Y')"];
 				echo"<h1>Time:</h1>";
-				$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(StartTime, '%h:%i %p') FROM cateringdata ORDER BY ID DESC LIMIT 3, 1;");
+				$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(StartTime, '%h:%i %p') FROM cateringdata ORDER BY date DESC LIMIT 3, 1;");
 				$allT =mysqli_fetch_assoc($resultT);
 				echo $allT["DATE_FORMAT(StartTime, '%h:%i %p')"];
 				echo " to ";
-				$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(EndTime, '%h:%i %p') FROM cateringdata ORDER BY ID DESC LIMIT 3, 1;");
+				$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(EndTime, '%h:%i %p') FROM cateringdata ORDER BY date DESC LIMIT 3, 1;");
 				$allT =mysqli_fetch_assoc($resultT);
 				echo $allT["DATE_FORMAT(EndTime, '%h:%i %p')"];
 			?>
 		</div>
-		<div id="shrtcntt">
+		<div class="shrtcntt shrtcntt4">
 			<?php
 				echo"<h1>Date:</h1>";
-				$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(Date, '%b %e, %Y') FROM cateringdata ORDER BY ID DESC LIMIT 4, 1;");
+				$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(Date, '%b %e, %Y') FROM cateringdata ORDER BY date DESC LIMIT 4, 1;");
 		    	$allT =mysqli_fetch_assoc($resultT);
 		    	echo $allT["DATE_FORMAT(Date, '%b %e, %Y')"];
 				echo"<h1>Time:</h1>";
-				$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(StartTime, '%h:%i %p') FROM cateringdata ORDER BY ID DESC LIMIT 4, 1;");
+				$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(StartTime, '%h:%i %p') FROM cateringdata ORDER BY date DESC LIMIT 4, 1;");
 				$allT =mysqli_fetch_assoc($resultT);
 				echo $allT["DATE_FORMAT(StartTime, '%h:%i %p')"];
 				echo " to ";
-				$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(EndTime, '%h:%i %p') FROM cateringdata ORDER BY ID DESC LIMIT 4, 1;");
+				$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(EndTime, '%h:%i %p') FROM cateringdata ORDER BY date DESC LIMIT 4, 1;");
 				$allT =mysqli_fetch_assoc($resultT);
 				echo $allT["DATE_FORMAT(EndTime, '%h:%i %p')"];
 			?>
 		</div>
-		<div id="shrtcntt">
+		<div class="shrtcntt shrtcntt5">
 			<?php
 				echo"<h1>Date:</h1>";
-				$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(Date, '%b %e, %Y') FROM cateringdata ORDER BY ID DESC LIMIT 5, 1;");
+				$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(Date, '%b %e, %Y') FROM cateringdata ORDER BY date DESC LIMIT 5, 1;");
 		    	$allT =mysqli_fetch_assoc($resultT);
 		    	echo $allT["DATE_FORMAT(Date, '%b %e, %Y')"];
 				echo"<h1>Time:</h1>";
-				$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(StartTime, '%h:%i %p') FROM cateringdata ORDER BY ID DESC LIMIT 5, 1;");
+				$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(StartTime, '%h:%i %p') FROM cateringdata ORDER BY date DESC LIMIT 5, 1;");
 				$allT =mysqli_fetch_assoc($resultT);
 				echo $allT["DATE_FORMAT(StartTime, '%h:%i %p')"];
 				echo " to ";
-				$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(EndTime, '%h:%i %p') FROM cateringdata ORDER BY ID DESC LIMIT 5, 1;");
+				$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(EndTime, '%h:%i %p') FROM cateringdata ORDER BY date DESC LIMIT 5, 1;");
 				$allT =mysqli_fetch_assoc($resultT);
 				echo $allT["DATE_FORMAT(EndTime, '%h:%i %p')"];
 			?>
 		</div>
-		<div id="shrtcntt">
+		<div class="shrtcntt shrtcntt6">
 			<?php
 				echo"<h1>Date:</h1>";
-				$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(Date, '%b %e, %Y') FROM cateringdata ORDER BY ID DESC LIMIT 6, 1;");
+				$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(Date, '%b %e, %Y') FROM cateringdata ORDER BY date DESC LIMIT 6, 1;");
 		    	$allT =mysqli_fetch_assoc($resultT);
 		    	echo $allT["DATE_FORMAT(Date, '%b %e, %Y')"];
 				echo"<h1>Time:</h1>";
-				$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(StartTime, '%h:%i %p') FROM cateringdata ORDER BY ID DESC LIMIT 6, 1;");
+				$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(StartTime, '%h:%i %p') FROM cateringdata ORDER BY date DESC LIMIT 6, 1;");
 				$allT =mysqli_fetch_assoc($resultT);
 				echo $allT["DATE_FORMAT(StartTime, '%h:%i %p')"];
 				echo " to ";
-				$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(EndTime, '%h:%i %p') FROM cateringdata ORDER BY ID DESC LIMIT 6, 1;");
+				$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(EndTime, '%h:%i %p') FROM cateringdata ORDER BY date DESC LIMIT 6, 1;");
 				$allT =mysqli_fetch_assoc($resultT);
 				echo $allT["DATE_FORMAT(EndTime, '%h:%i %p')"];
 			?>
 		</div>
-		<div id="shrtcntt">
+		<div class="shrtcntt shrtcntt7">
 			<?php
 				echo"<h1>Date:</h1>";
-				$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(Date, '%b %e, %Y') FROM cateringdata ORDER BY ID DESC LIMIT 7, 1;");
+				$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(Date, '%b %e, %Y') FROM cateringdata ORDER BY date DESC LIMIT 7, 1;");
 		    	$allT =mysqli_fetch_assoc($resultT);
 		    	echo $allT["DATE_FORMAT(Date, '%b %e, %Y')"];
 				echo"<h1>Time:</h1>";
-				$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(StartTime, '%h:%i %p') FROM cateringdata ORDER BY ID DESC LIMIT 7, 1;");
+				$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(StartTime, '%h:%i %p') FROM cateringdata ORDER BY date DESC LIMIT 7, 1;");
 				$allT =mysqli_fetch_assoc($resultT);
 				echo $allT["DATE_FORMAT(StartTime, '%h:%i %p')"];
 				echo " to ";
-				$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(EndTime, '%h:%i %p') FROM cateringdata ORDER BY ID DESC LIMIT 7, 1;");
+				$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(EndTime, '%h:%i %p') FROM cateringdata ORDER BY date DESC LIMIT 7, 1;");
 				$allT =mysqli_fetch_assoc($resultT);
 				echo $allT["DATE_FORMAT(EndTime, '%h:%i %p')"];
 			?>
 		</div>
-		<div id="shrtcntt">
+		<div class="shrtcntt shrtcntt8">
 			<?php
 				echo"<h1>Date:</h1>";
-				$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(Date, '%b %e, %Y') FROM cateringdata ORDER BY ID DESC LIMIT 8, 1;");
+				$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(Date, '%b %e, %Y') FROM cateringdata ORDER BY date DESC LIMIT 8, 1;");
 		    	$allT =mysqli_fetch_assoc($resultT);
 		    	echo $allT["DATE_FORMAT(Date, '%b %e, %Y')"];
 				echo"<h1>Time:</h1>";
-				$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(StartTime, '%h:%i %p') FROM cateringdata ORDER BY ID DESC LIMIT 8, 1;");
+				$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(StartTime, '%h:%i %p') FROM cateringdata ORDER BY date DESC LIMIT 8, 1;");
 				$allT =mysqli_fetch_assoc($resultT);
 				echo $allT["DATE_FORMAT(StartTime, '%h:%i %p')"];
 				echo " to ";
-				$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(EndTime, '%h:%i %p') FROM cateringdata ORDER BY ID DESC LIMIT 8, 1;");
+				$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(EndTime, '%h:%i %p') FROM cateringdata ORDER BY date DESC LIMIT 8, 1;");
 				$allT =mysqli_fetch_assoc($resultT);
 				echo $allT["DATE_FORMAT(EndTime, '%h:%i %p')"];
 			?>

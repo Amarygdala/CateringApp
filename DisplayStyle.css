@@ -16,7 +16,7 @@ html{
   text-align: center;
   padding: 15px;
   text-decoration: none;
-  font-size: 18px; 
+  font-size: 18px;
   line-height: 30px;
   border-radius: 4px;
 
@@ -27,7 +27,7 @@ html{
 	color: white;
 	border-color: dodgerblue;
 	background-color: dodgerblue ;
-	font-size: 18px; 
+	font-size: 18px;
 	border-radius: 4px;
 
 }
@@ -46,7 +46,7 @@ html{
 p[id="dateTime"]{
 	position: absolute;
 }
-/* Add media queries for responsiveness - when the screen is 500px wide or less, stack the links on top of each other */ 
+/* Add media queries for responsiveness - when the screen is 500px wide or less, stack the links on top of each other */
 @media screen and (max-width: 500px) {
   .header a {
     float: none;
@@ -96,7 +96,7 @@ p[id="dateTime"]{
 	float: left;
 	overflow: auto;
 }
-#shrtcntt{
+.shrtcntt{
 	height: 30%;
 	width: 90%;
 	margin: 10px 10px;
@@ -108,7 +108,7 @@ p[id="dateTime"]{
 	line-height: 50px;
 
 }
-#shrtcntt h1{
+.shrtcntt h1{
 	margin:0;
 	font-size: 	1em;
 }
