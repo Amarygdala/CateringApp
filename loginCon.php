@@ -2,7 +2,6 @@
 
 if(isset($_POST['login-submit'])){
 	require 'loginSystemConn.php';
-
 	$username=$_POST['userid'];
 	$password=$_POST['pwd'];
 

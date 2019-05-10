@@ -12,8 +12,7 @@ if(isset($_POST['signup-submit'])){
 	}else if(empty($username)||empty($password)||empty($passwordR)){
 		header("Location:../CateringApp/signup_page.php?error=emptyfields");
 		exit();
-	}
-	else{
+	}else{
 		$sql="SELECT uid FROM users WHERE uid=?;";
 		$stmt = mysqli_stmt_init($conn);
 		if(!mysqli_stmt_prepare($stmt,$sql)){
@@ -25,7 +24,7 @@ if(isset($_POST['signup-submit'])){
 			mysqli_stmt_store_result($stmt);
 			$resultCheck=mysqli_stmt_num_rows($stmt);
 			if($resultCheck>0){
-			header("Location:../CateringApp/signup_page.php?error=usernametaken");
+				header("Location:../CateringApp/signup_page.php?error=usernametaken");
 			exit();
 			}else{
 				$sql="INSERT INTO users(uid,upwd) VALUES(?,?);";
@@ -40,7 +39,6 @@ if(isset($_POST['signup-submit'])){
 					header("Location:../CateringApp/signup_page.php?success");
 					exit();
 				}
-
 			}
 		}
 	}

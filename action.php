@@ -1,7 +1,5 @@
 <?php
-
 	include("..\CateringApp\connection.php");
-
 	$date = $_POST["date"]??'';
 	$start_time = $_POST["start_time"]??'';
 	$end_time = $_POST["end_time"]??'';
@@ -18,6 +16,5 @@
 	$vendor = $_POST["vendor"]??'';
 	$food = $_POST["food"]??'';
 	$dbinsert = "INSERT INTO cateringdata (Date,StartTime,EndTime,Room,DeliveryTime,MorningBreak,AfternoonBreak,Floor,Attendees,Purpose,Restrictions,HotCold,Drinks,Vendor,Food) VALUES ('$date', '$start_time', '$end_time', '$room', '$delivery_time','$morning_break', '$afternoon_break', '$floor', '$attendees', '$purpose','$restrictions','$hot_cold', '$drinks', '$vendor', '$food');";
-
 	mysqli_query( $connection, $dbinsert ); 
 	header("Location: ../CateringApp/form.php?=success");

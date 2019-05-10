@@ -1,7 +1,6 @@
 html{
 	margin: 0;
 	padding: 0;
-
 }
 h1{
 	font-size: 2.5em;
@@ -9,22 +8,24 @@ h1{
 }
 body{
 	background-color: rgba(135,206,250,0.2);
-	width: 21em;
-	margin:auto auto;
+	width: 400px;
+	margin: auto;
 	font: 100% Arial, Helvetica, sans-serif;
-
-
 }
 .wrapper{ 
-	margin: 55% 0;
-
+	margin: 45% 0;
+	padding-left: 50px;
 }
 input,button[type="submit"]{
 	display: inline-block;
-	margin:auto;
+	margin: auto;
 	margin-bottom: 20px;
 	width: 20em;
 }
 button[type="submit"]{
 	margin-bottom: 10px;
+}
+img[src="sap.png"]{
+	width: 50%;
+
 }

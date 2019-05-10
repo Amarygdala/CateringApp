@@ -1,5 +1,4 @@
 <?php
-
 $dbUsername = "root";
 $dbPassword = "";
 $conn = mysqli_connect("localhost", $dbUsername, $dbPassword,"loginsystem");

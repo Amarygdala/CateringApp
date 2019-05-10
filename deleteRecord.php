@@ -1,13 +1,12 @@
 <?php
-require "reqAdmin.php";
+    require "reqAdmin.php";
 ?>
 <html>
 <header>
     <link rel="stylesheet" href="globalStyle.css">
-<link rel="stylesheet" href="styletable.css">
+    <link rel="stylesheet" href="styletable.css">
 </header>
 <body>
-
 
 <div class="burgerTOP">
 <div class="burger">
@@ -21,6 +20,8 @@ require "reqAdmin.php";
 <div class="burger"></div>
 <div class="burger"></div>
 </div>
+
+<script>function dropFunction(){document.getElementById("dropMenu").classList.toggle("show");}</script>
 <div class="formTOP">
 
 <form action="" method="POST">
@@ -29,31 +30,22 @@ require "reqAdmin.php";
 </form>
 </div>
 
-
-<script src="burger.js"></script>
-
 <?php
-
 	include("..\CateringApp\connection.php");
     $sql = "SELECT * FROM cateringdata;";
     $result = mysqli_query( $connection, $sql );
-echo "<table id='datatable'>";
+    echo "<table id='datatable'>";
     $resultCheck = mysqli_num_rows($result);
     if($resultCheck>0){
-	    	echo "  <tr><th>ID</th><th>Date</th><th>Start Time</th><th>End Time</th><th>Room</th><th>Delivery Time</th><th>Morning Break</th><th>Afternoon Break</th><th>Floor</th><th>Number of Attendees</th><th>Purpose</th><th>Restrictions</th><th>Hot or Cold</th><th>Drinks</th><th>Vendor</th><th>Food</th></tr>";
+	    echo "  <tr><th>ID</th><th>Date</th><th>Start Time</th><th>End Time</th><th>Room</th><th>Delivery Time</th><th>Morning Break</th><th>Afternoon Break</th><th>Floor</th><th>Number of Attendees</th><th>Purpose</th><th>Restrictions</th><th>Hot or Cold</th><th>Drinks</th><th>Vendor</th><th>Food</th></tr>";
 	    while($all =mysqli_fetch_assoc($result) ){
 	        echo "<tr><td>" .$all['ID'] . "</td><td>" .  $all['Date'] . "</td><td>" . $all['StartTime'] . "</td><td>". $all['EndTime'] . "</td><td>". $all['Room'] . "</td><td>". $all['DeliveryTime'] . "</td><td>". $all['MorningBreak'] . "</td><td>" .$all['AfternoonBreak'] . "</td><td>".$all['Floor'] . "</td><td>".$all['Attendees'] . "</td><td>".$all['Purpose'] . "</td><td>".$all['Restrictions'] . "</td><td>".$all['HotCold'] . "</td><td>".$all['Drinks'] . "</td><td>". $all['Vendor'] . "</td><td>". $all['Food'] . "</td></tr>"; 
 }
-
 echo "</table>"; //Close the table in HTML
-
 	}
-
 	$deleteID=$_POST['ID']??'';
 	$dbDelete = "DELETE FROM `cateringdata` WHERE `cateringdata`.`ID` = $deleteID";//` quotations are needed for SQL
 	mysqli_query( $connection, $dbDelete); 
-
-
 ?>
 </body>
 </html>

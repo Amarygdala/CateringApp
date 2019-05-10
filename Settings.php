@@ -1,5 +1,5 @@
 <?php
-require "reqUser.php";
+	require "reqUser.php";
 ?>
 <!DOCTYPE html>
 <html>
@@ -8,14 +8,19 @@ require "reqUser.php";
 	<link rel="stylesheet" href="globalStyle.css">
 </head>
 <body>
-	<img src="dshop-logo-small.png">
+
+<img src="dshop-logo-small.png">
+
 <form action="/CateringApp/logout.php" method="post">
-<button class="button button1" name="logout-submit">Logout</button> 
+	<button class="button button1" name="logout-submit">Logout</button> 
 </form>
+
 <form action="../CateringApp/Display.php">
-<button class="button button2">Back to Display</button> 
+	<button class="button button2">Back to Display</button> 
 </form>
+
 <h2>Parallax with scroll</h2>
+
 <div class="switches">
 <label class="switch">
   <input type="checkbox">

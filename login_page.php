@@ -1,17 +1,15 @@
 <?php
-session_start();
+	session_start();
 ?>
 <!DOCTYPE html>
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="globalStyle.css">
 	<link rel="stylesheet" type="text/css" href="loginStyle.css">
-	<title></title>
 </head>
 <body>
 	<div class="wrapper">
 	<h1>Login</h1>
-
 	<?php
 	if (isset($_GET['error'])){
 		if ($_GET['error']=="noaccess") {
@@ -29,7 +27,7 @@ session_start();
 		<input type="password" name="pwd" placeholder="Password">
 		<button type="submit" name="login-submit">Login</button>
 	</form>
-
+<img src="sap.png">
 </div>
 </body>
 </html>

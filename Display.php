@@ -1,9 +1,9 @@
-
 <!DOCTYPE html>
 <html>
+
 <head>
 	<meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  	<meta name="viewport" content="width=device-width,initial-scale=1.0">
 	<link rel="stylesheet" href="DisplayStyle.css">
 	<link rel="stylesheet" href="globalStyle.css">
 	<meta http-equiv="refresh" content="300">
@@ -13,12 +13,12 @@ if(!isset($_GET['shrtNum'])){
 }
 ?>
 </head>
+
 <body>
 <div class="header">
 	  <div class="header-right">
 	  		<a class="active" href="../CateringApp/Settings.php">Settings</a>
-	  		<button value="Refresh Page" onClick="window.location.reload()">Refresh</button>
-	  		</br>
+	  		<button value="Refresh Page" onClick="window.location.reload()">Refresh</button></br>
 	  		<p id="dateTime"></p>
 	  		<script> let d = new Date(); document.getElementById("dateTime").innerHTML ="Last Refreshed:"+ d;</script>
 	</div>
@@ -45,7 +45,6 @@ if(!isset($_GET['shrtNum'])){
 				$allT =mysqli_fetch_assoc($resultT);
 				echo $allT["DATE_FORMAT(EndTime, '%h:%i %p')"];
 			?>
-
 		</div>
 		<div class="shrtcntt shrtcntt1" onclick="replaceShow('1')">
 			<?php
@@ -66,7 +65,6 @@ if(!isset($_GET['shrtNum'])){
 		</div>
 		<div class="shrtcntt shrtcntt2" onclick="replaceShow('2')">
 			<?php
-
 				echo"<h1>Date:</h1>";
 				$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(Date, '%b %e, %Y') FROM cateringdata ORDER BY date DESC LIMIT 2, 1;");
 		    	$allT =mysqli_fetch_assoc($resultT);
@@ -178,138 +176,123 @@ if(!isset($_GET['shrtNum'])){
 			?>
 		</div>
 	</div>
-<!-- Below is main display -->
 <script type="text/javascript">
 function replaceShow(shrtNum){
-	console.log(shrtNum);
-  for (var i = 0; i < 9; i++) {
-    document.getElementsByClassName("shrtcntt"+i)[0].style.backgroundColor = "white";
-  }
+  	for (var i = 0; i < 9; i++) {
+    	document.getElementsByClassName("shrtcntt"+i)[0].style.backgroundColor = "white";
+  	}
 	document.getElementsByClassName("shrtcntt"+shrtNum)[0].style.backgroundColor = "lightgrey";
 	window.location.href = "../CateringApp/display.php?shrtNum="+shrtNum;
 	return;
 }
 </script>
-
+<!-- Below is main display -->
 <?php
 	$showNum = $_GET['shrtNum'];
 	$all=mysqli_fetch_assoc(mysqli_query( $connection, "SELECT * FROM cateringdata ORDER BY date DESC LIMIT $showNum, 1;"));
 ?>
 
-	<div class="show">
+<div class="show">
+
 	<div id="DateID">
 		<h1>Date</h1>
-<?php
-    $resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(Date, '%b %e, %Y') FROM cateringdata ORDER BY date DESC LIMIT $showNum, 1;");
-    $allT =mysqli_fetch_assoc($resultT);
-    echo $allT["DATE_FORMAT(Date, '%b %e, %Y')"];
-    ?>
+		<?php
+		    $resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(Date, '%b %e, %Y') FROM cateringdata ORDER BY date DESC LIMIT $showNum, 1;");
+		    $allT =mysqli_fetch_assoc($resultT);
+		    echo $allT["DATE_FORMAT(Date, '%b %e, %Y')"];
+		?>
 </div>
-
 	<div id="TimeID">
 		<h1>Time(start to end)</h1>
 		<?php
-	$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(StartTime, '%h:%i %p') FROM cateringdata ORDER BY date DESC LIMIT $showNum, 1;");
-	$allT =mysqli_fetch_assoc($resultT);
-	echo $allT["DATE_FORMAT(StartTime, '%h:%i %p')"];
-	echo " to ";
-	$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(EndTime, '%h:%i %p') FROM cateringdata ORDER BY date DESC LIMIT $showNum, 1;");
-	$allT =mysqli_fetch_assoc($resultT);
-	echo $allT["DATE_FORMAT(EndTime, '%h:%i %p')"];
+			$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(StartTime, '%h:%i %p') FROM cateringdata ORDER BY date DESC LIMIT $showNum, 1;");
+			$allT =mysqli_fetch_assoc($resultT);
+			echo $allT["DATE_FORMAT(StartTime, '%h:%i %p')"];
+			echo " to ";
+			$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(EndTime, '%h:%i %p') FROM cateringdata ORDER BY date DESC LIMIT $showNum, 1;");
+			$allT =mysqli_fetch_assoc($resultT);
+			echo $allT["DATE_FORMAT(EndTime, '%h:%i %p')"];
     ?>
 </div>
 	<div id="dTimeID">
 		<h1>Delivery Time</h1>
 	<?php
-	$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(EndTime, '%h:%i %p') FROM cateringdata ORDER BY date DESC LIMIT $showNum, 1;");
-	$allT =mysqli_fetch_assoc($resultT);
-	echo $allT["DATE_FORMAT(EndTime, '%h:%i %p')"];
+		$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(EndTime, '%h:%i %p') FROM cateringdata ORDER BY date DESC LIMIT $showNum, 1;");
+		$allT =mysqli_fetch_assoc($resultT);
+		echo $allT["DATE_FORMAT(EndTime, '%h:%i %p')"];
 	?>
 </div>
-
-<div id="MBreakID">
-	<h1>Morning Break</h1>
-	<?php
-	$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(EndTime, '%h:%i %p') FROM cateringdata ORDER BY date DESC LIMIT $showNum, 1;");
-	$allT =mysqli_fetch_assoc($resultT);
-	echo $allT["DATE_FORMAT(EndTime, '%h:%i %p')"];
-	?>
+	<div id="MBreakID">
+		<h1>Morning Break</h1>
+		<?php
+			$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(EndTime, '%h:%i %p') FROM cateringdata ORDER BY date DESC LIMIT $showNum, 1;");
+			$allT =mysqli_fetch_assoc($resultT);
+			echo $allT["DATE_FORMAT(EndTime, '%h:%i %p')"];
+		?>
 </div>
-
 <div id="ABreakID">
 	<h1>Afternoon Break</h1>
 	<?php
-	$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(EndTime, '%h:%i %p') FROM cateringdata ORDER BY date DESC LIMIT $showNum, 1;");
-	$allT =mysqli_fetch_assoc($resultT);
-	echo $allT["DATE_FORMAT(EndTime, '%h:%i %p')"];
+		$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(EndTime, '%h:%i %p') FROM cateringdata ORDER BY date DESC LIMIT $showNum, 1;");
+		$allT =mysqli_fetch_assoc($resultT);
+		echo $allT["DATE_FORMAT(EndTime, '%h:%i %p')"];
 	?>
 	</div>
-
 	<div id="RoomID">
 		<h1>Room</h1>
-	<?php
-		echo $all["Room"];
-	?>
+		<?php
+			echo $all["Room"];
+		?>
 	</div>
-
-
 	<div id="FloorID">
 		<h1>Floor</h1>
 		<?php
-		echo $all["Floor"];
+			echo $all["Floor"];
 		?>
 </div>
-
 	<div id="AttendeesID">
 		<h1>Number of Attendees</h1>
 		<?php
-		echo $all["Attendees"]. " people";
+			echo $all["Attendees"]. " people";
 		?>
 </div>
-
 	<div id="PurposeID">
 		<h1>Purpose</h1>
 		<?php
-		echo $all["Purpose"];
+			echo $all["Purpose"];
 		?>
 </div>
-
 	<div id="RestrictionsID">
 		<h1>Restrictions</h1>
 		<?php
-		echo $all["Restrictions"];
+			echo $all["Restrictions"];
 		?>
 </div>
-
 	<div id="HotColdID">
 		<h1>Hot/Cold</h1>
 		<?php
-		echo $all["HotCold"];
+			echo $all["HotCold"];
 		?>
 </div>
-
 	<div id="DrinksID">
 		<h1>Drinks</h1>
 		<?php
-		echo $all["Drinks"];
+			echo $all["Drinks"];
 		?>
 </div>
-
 	<div id="VendorID">
 		<h1>Vendor</h1>
 		<?php
-		echo $all["Vendor"];
+			echo $all["Vendor"];
 		?>
 </div>
 	<div id="FoodID">
 		<h1>Food</h1>
 		<?php
-		echo $all["Food"];
+			echo $all["Food"];
 		?>
 </div>
-
-	</div>
-
+</div>
 <img src="dshop-logo-small.png">
 </div>
 

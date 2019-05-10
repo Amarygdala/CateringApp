@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	    	header("refresh: 601"); 
+	header("refresh: 601"); 
 	if(!isset($_SESSION['userId']))
 	{
 	    header('Location: ../CateringApp/login_page.php');
