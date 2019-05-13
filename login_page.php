@@ -11,6 +11,7 @@
 	<div class="wrapper">
 	<h1>Login</h1>
 	<?php
+	//Get error from url and output error messages.
 	if (isset($_GET['error'])){
 		if ($_GET['error']=="noaccess") {
 			echo "<h4>Error: Login with admin account</h4>";
@@ -21,7 +22,7 @@
 		}
 }
 	?>
-
+	<!--Login input boxes that redirect to loginCon.php-->
 	<form action="../CateringApp/loginCon.php" method="post">
 		<input type="text" name="userid" placeholder="Username">
 		<input type="password" name="pwd" placeholder="Password">
