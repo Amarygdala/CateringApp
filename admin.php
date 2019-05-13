@@ -3,11 +3,8 @@
 ?>
 <!DOCTYPE html>
 <html>
-<head>
-	<title></title>
-</head>
 <body>
-	
+	<!--3 Buttons that redirect-->
 <form action="../CateringApp/signup_page.php" method="post"> 
 	<button type="submit" >Sign Up</button>
 </form>
