@@ -12,7 +12,7 @@
     </head>
 	<body>
         <img src="usericon.png" class="usericon">
-<!-- Side bar incomplete
+<!-- Side bar incomplete, would replace dropdown menu of burger.
 <div id="sidebar">
     <div class="togglebtn" onclick="toggleSidebar()">
         <span></span>
@@ -28,6 +28,7 @@
         document.getElementById("sidebar").classList.toggle('active');
     }
 </script>-->
+<!--Burger icon that shows a dropdown to redirect to other pages-->
 <div class="burger">
     <button onclick="dropFunction()" class="dropbtn"></button>
     <div id="dropMenu" class="menuContent">
@@ -38,9 +39,9 @@
 </div>
 <div class="burger"></div>
 <div class="burger"></div>
-
+<!--JS function that show/hide the dropdown menu form the burger icon-->
 <script>function dropFunction(){document.getElementById("dropMenu").classList.toggle("show");}</script>
-
+<!-- The form, input boxes for everything-->
 <form action="action.php" method="POST">
    	<h1>SAP Catering Form</h1> 
 <div class="formclass">
