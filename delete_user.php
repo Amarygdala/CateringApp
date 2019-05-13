@@ -1,3 +1,4 @@
+<!--Vulnerable to SQL injection attacks (The login system isn't).-->
 <?php
 	require "reqAdmin.php";
 ?>
@@ -9,6 +10,7 @@
 </head>
 <body>
 <?php
+//creates a table from the loginsystem database and displays
 	require 'loginSystemConn.php';
     $sql = "SELECT * FROM users;";
     $result = mysqli_query( $conn, $sql );
@@ -19,10 +21,10 @@
 	    while($all =mysqli_fetch_assoc($result) ){
 	        echo "<tr><td>" .$all['id'] . "</td><td>" .  $all['uid'] . "</td></tr>"; 
 }
-echo "</table>"; //Close the table in HTML
+echo "</table>"; 
 	}
 	?>
-	
+	<!-- Sends a id value to delete, then run deletion code after-->
 	<form action="" method="post">
 		<input type="number" name="id" placeholder="ID">
 		<button type="submit">Delete</button>
@@ -30,7 +32,7 @@ echo "</table>"; //Close the table in HTML
 
 <?php
 	$deleteID=$_POST['id']??'';
-	$dbDelete = "DELETE FROM `users` WHERE `id` = $deleteID";
+	$dbDelete = "DELETE FROM `users` WHERE `id` = $deleteID";//DO NOT CHANGE QUOTATION MARKS. REMOVAL OF `` FOR '' RESULTS IN ERROR.
 	mysqli_query( $conn, $dbDelete); 
 ?>
 	<form action="admin.php" method="post">
