@@ -6,8 +6,11 @@
   	<meta name="viewport" content="width=device-width,initial-scale=1.0">
 	<link rel="stylesheet" href="DisplayStyle.css">
 	<link rel="stylesheet" href="globalStyle.css">
+	<!--Refresh every 5 minutes-->
 	<meta http-equiv="refresh" content="300">
 <?php 
+//If there is no value for shrtNum in the url then automatically redirect to shrtNum=0
+//This redirects the page when user only types in 'display.php' and not 'display.php?shrtNum=0'
 if(!isset($_GET['shrtNum'])){
   header('Location: ../CateringApp/display.php?shrtNum=0');
 }
@@ -20,6 +23,7 @@ if(!isset($_GET['shrtNum'])){
 	  		<a class="active" href="../CateringApp/Settings.php">Settings</a>
 	  		<button value="Refresh Page" onClick="window.location.reload()">Refresh</button></br>
 	  		<p id="dateTime"></p>
+	  		<!--JS code for last refreshed time-->
 	  		<script> let d = new Date(); document.getElementById("dateTime").innerHTML ="Last Refreshed:"+ d;</script>
 	</div>
 </div>
@@ -32,6 +36,8 @@ if(!isset($_GET['shrtNum'])){
 	<div id="selector">
 		<div class="shrtcntt shrtcntt0" onclick="replaceShow('0')">
 			<?php
+				//First box that prints the date and time data for the first dataset
+				//All shrtcntt classes are the same, but for the next box and dataset.
 				echo"<h1>Date:</h1>";
 				$resultT = mysqli_query( $connection, "SELECT DATE_FORMAT(Date, '%b %e, %Y') FROM cateringdata ORDER BY date DESC LIMIT 0, 1;");
 		    	$allT =mysqli_fetch_assoc($resultT);
@@ -176,24 +182,25 @@ if(!isset($_GET['shrtNum'])){
 			?>
 		</div>
 	</div>
+<!--PHP code for changing the color, and JS for redirecting url to the shrtcntt class box number the user selects-->
+<?php
+	$showNum=$_GET['shrtNum'];
+	echo "<script>document.getElementsByClassName('shrtcntt'+$showNum)[0].style.backgroundColor = 'lightgrey';</script>";
+?>
+
 <script type="text/javascript">
 function replaceShow(shrtNum){
-  	for (var i = 0; i < 9; i++) {
-    	document.getElementsByClassName("shrtcntt"+i)[0].style.backgroundColor = "white";
-  	}
-	document.getElementsByClassName("shrtcntt"+shrtNum)[0].style.backgroundColor = "lightgrey";
 	window.location.href = "../CateringApp/display.php?shrtNum="+shrtNum;
 	return;
 }
 </script>
 <!-- Below is main display -->
 <?php
-	$showNum = $_GET['shrtNum'];
 	$all=mysqli_fetch_assoc(mysqli_query( $connection, "SELECT * FROM cateringdata ORDER BY date DESC LIMIT $showNum, 1;"));
 ?>
 
 <div class="show">
-
+<!--Show all data in display one by one-->
 	<div id="DateID">
 		<h1>Date</h1>
 		<?php
