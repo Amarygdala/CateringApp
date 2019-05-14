@@ -1,11 +1,12 @@
 <?php
+//Only run if gets signup-submit
 if(isset($_POST['signup-submit'])){
 	require 'loginSystemConn.php';
 
 	$username=$_POST['uid'];
 	$password=$_POST['pwd'];
 	$passwordR=$_POST['pwd-repeat'];
-
+	//checks for errors
 	if($password!==$passwordR){
 		header("Location:../CateringApp/signup_page.php?error=passwordcheck&uid=".$username);
 		exit();
@@ -22,11 +23,13 @@ if(isset($_POST['signup-submit'])){
 			mysqli_stmt_bind_param($stmt,"s", $username);
 			mysqli_stmt_execute($stmt);
 			mysqli_stmt_store_result($stmt);
+			//$resultCheck checks database for the username, if it returns a username, then it redirects with error.
 			$resultCheck=mysqli_stmt_num_rows($stmt);
 			if($resultCheck>0){
 				header("Location:../CateringApp/signup_page.php?error=usernametaken");
 			exit();
 			}else{
+				//Inser new user, hash the password.
 				$sql="INSERT INTO users(uid,upwd) VALUES(?,?);";
 				$stmt = mysqli_stmt_init($conn);
 				if(!mysqli_stmt_prepare($stmt,$sql)){
@@ -45,6 +48,7 @@ if(isset($_POST['signup-submit'])){
 	mysqli_stmt_close($stmt);
 	mysql_close($conn);
 }else{
+	//Redirects to signup_page if not come from the signup page.
 	header("Location:../CateringApp/signup_page.php");
 	exit();
 }
