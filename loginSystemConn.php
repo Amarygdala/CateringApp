@@ -1,4 +1,5 @@
 <?php
+//Connection for loginsystem database, and an extra check.
 $dbUsername = "root";
 $dbPassword = "";
 $conn = mysqli_connect("localhost", $dbUsername, $dbPassword,"loginsystem");
