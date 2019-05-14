@@ -1,10 +1,10 @@
 <?php
-
+//Only run if there is a value of login-submit that has been posted
 if(isset($_POST['login-submit'])){
 	require 'loginSystemConn.php';
 	$username=$_POST['userid'];
 	$password=$_POST['pwd'];
-
+	//Check for empty fields and redirect.
 	if(empty($username)||empty($password)){
 		header("Location:../CateringApp/login_page.php?error=emptyfields");
 		exit();
@@ -18,19 +18,25 @@ if(isset($_POST['login-submit'])){
 			mysqli_stmt_bind_param($stmt,"s", $username);
 			mysqli_stmt_execute($stmt);
 			$result=mysqli_stmt_get_result($stmt);
+			//$row becomes results of database
 			if($row=mysqli_fetch_assoc($result)){
+				//Check password if user entered password is in the upwd column.
 				$pwdCheck=password_verify($password, $row['upwd']);
+				//Redirect if password check fails
 				if ($pwdCheck==false) {
 					header("Location:../CateringApp/login_page.php?error=userorpwd");
 					exit();
 				}else if($pwdCheck==true){
+					//If password check goes through, start sessions with the id and username of the user.
 					session_start();
 					$_SESSION['userId'] = $row['id'];
 					$_SESSION['userUid'] = $row['uid'];
+					//Redirect to admin page if username is dshop.
 					if($row['uid']=="dshop"){
 						header("Location:../CateringApp/admin.php");
 						exit();
 					}else{
+						//Redirect to the form for normal user.
 						header("Location:../CateringApp/form.php?login=success");
 						exit();
 					}
@@ -47,6 +53,7 @@ if(isset($_POST['login-submit'])){
 	mysqli_stmt_close($stmt);
 	mysql_close($conn);
 }else{
+	//Redirects back to the login_page if not get login-submit
 	header("Location:../CateringApp/login_page.php");
 	exit();
 }
