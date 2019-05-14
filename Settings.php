@@ -1,4 +1,5 @@
 <?php
+//Incomplete settings pane. Not implemented.
 	require "reqUser.php";
 ?>
 <!DOCTYPE html>
