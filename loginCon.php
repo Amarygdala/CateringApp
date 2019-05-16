@@ -6,13 +6,13 @@ if(isset($_POST['login-submit'])){
 	$password=$_POST['pwd'];
 	//Check for empty fields and redirect.
 	if(empty($username)||empty($password)){
-		header("Location:../CateringApp/login_page.php?error=emptyfields");
+		header("Location:../login_page.php?error=emptyfields");
 		exit();
 	}else{
 		$sql="SELECT * FROM users WHERE uid=?;";
 		$stmt = mysqli_stmt_init($conn);
 		if(!mysqli_stmt_prepare($stmt,$sql)){
-			header("Location:../CateringApp/login_page.php?error=sql");
+			header("Location:../login_page.php?error=sql");
 			exit();
 		}else{
 			mysqli_stmt_bind_param($stmt,"s", $username);
@@ -24,7 +24,7 @@ if(isset($_POST['login-submit'])){
 				$pwdCheck=password_verify($password, $row['upwd']);
 				//Redirect if password check fails
 				if ($pwdCheck==false) {
-					header("Location:../CateringApp/login_page.php?error=userorpwd");
+					header("Location:../login_page.php?error=userorpwd");
 					exit();
 				}else if($pwdCheck==true){
 					//If password check goes through, start sessions with the id and username of the user.
@@ -33,19 +33,19 @@ if(isset($_POST['login-submit'])){
 					$_SESSION['userUid'] = $row['uid'];
 					//Redirect to admin page if username is dshop.
 					if($row['uid']=="dshop"){
-						header("Location:../CateringApp/admin.php");
+						header("Location:../admin.php");
 						exit();
 					}else{
 						//Redirect to the form for normal user.
-						header("Location:../CateringApp/form.php?login=success");
+						header("Location:../form.php?login=success");
 						exit();
 					}
 				}else{
-					header("Location:../CateringApp/login_page.php?error=4");
+					header("Location:../login_page.php?error=4");
 					exit();
 				}
 			}else{
-				header("Location:../CateringApp/login_page.php?error=userorpwd");
+				header("Location:../login_page.php?error=userorpwd");
 				exit();
 			}
 		}
@@ -54,7 +54,7 @@ if(isset($_POST['login-submit'])){
 	mysql_close($conn);
 }else{
 	//Redirects back to the login_page if not get login-submit
-	header("Location:../CateringApp/login_page.php");
+	header("Location:../login_page.php");
 	exit();
 }
 

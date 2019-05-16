@@ -12,11 +12,11 @@
 
 <img src="dshop-logo-small.png">
 
-<form action="/CateringApp/logout.php" method="post">
+<form action="/logout.php" method="post">
 	<button class="button button1" name="logout-submit">Logout</button> 
 </form>
 
-<form action="../CateringApp/Display.php">
+<form action="../Display.php">
 	<button class="button button2">Back to Display</button> 
 </form>
 

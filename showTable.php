@@ -27,7 +27,7 @@
 
 <?php
 //Prints out table for record viewing.
-    include("..\CateringApp\connection.php");
+    require 'connection.php';
     $sql = "SELECT * FROM cateringdata;";
     $result = mysqli_query( $connection, $sql );
     echo "<table id='datatable'>";

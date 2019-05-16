@@ -72,7 +72,7 @@
         	<option value="External">External</option>
         	<option value="Internal">Internal</option>
 		</select></br>
-	<label for="restrictions">Restrictions:</label>
+	<label for="restrictions">Restrictions/Notes:</label>
 	   <input type="text" name="restrictions">
     <label for="hot_cold">Cold/Hot:</label>
         <select name="hot_cold">

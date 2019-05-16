@@ -12,7 +12,7 @@
 //If there is no value for shrtNum in the url then automatically redirect to shrtNum=0
 //This redirects the page when user only types in 'display.php' and not 'display.php?shrtNum=0'
 if(!isset($_GET['shrtNum'])){
-  header('Location: ../CateringApp/display.php?shrtNum=0');
+  header('Location: ../display.php?shrtNum=0');
 }
 ?>
 </head>
@@ -20,7 +20,7 @@ if(!isset($_GET['shrtNum'])){
 <body>
 <div class="header">
 	  <div class="header-right">
-	  		<a class="active" href="../CateringApp/Settings.php">Settings</a>
+	  		<a class="active" href="../Settings.php">Settings</a>
 	  		<button value="Refresh Page" onClick="window.location.reload()">Refresh</button></br>
 	  		<p id="dateTime"></p>
 	  		<!--JS code for last refreshed time-->
@@ -29,7 +29,7 @@ if(!isset($_GET['shrtNum'])){
 </div>
 
 <?php
-	include("..\CateringApp\connection.php");
+	require 'connection.php';
 ?>
 <!-- Below is right sidebar for short description content -->
 <div class="outbox">
@@ -190,7 +190,7 @@ if(!isset($_GET['shrtNum'])){
 
 <script type="text/javascript">
 function replaceShow(shrtNum){
-	window.location.href = "../CateringApp/display.php?shrtNum="+shrtNum;
+	window.location.href = "../display.php?shrtNum="+shrtNum;
 	return;
 }
 </script>
@@ -270,7 +270,7 @@ function replaceShow(shrtNum){
 		?>
 </div>
 	<div id="RestrictionsID">
-		<h1>Restrictions</h1>
+		<h1>Restrictions/Notes</h1>
 		<?php
 			echo $all["Restrictions"];
 		?>
