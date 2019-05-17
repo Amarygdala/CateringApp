@@ -11,7 +11,17 @@
         <link rel="stylesheet" href="globalStyle.css">
     </head>
 	<body>
-        <img src="usericon.png" class="usericon">
+        <!--The user icon-->
+        <div class="user">
+            <img src="usericon.png" class="usericon" onclick="userDropFunction()">
+            <div id="dropMenuUser" class="menuContentUser">
+                <a><?php echo "Hello ".$_SESSION['userUid']?></a>
+                <a></a>
+                <a href="logout.php">Logout</a>
+            </div>
+        </div>
+        <!--JS function for the user icon, showing dropdown-->
+        <script type="text/javascript">function userDropFunction(){document.getElementById("dropMenuUser").classList.toggle("show");} </script>
 <!-- Side bar incomplete, would replace dropdown menu of burger.
 <div id="sidebar">
     <div class="togglebtn" onclick="toggleSidebar()">
@@ -40,7 +50,7 @@
 <div class="burger"></div>
 <div class="burger"></div>
 <!--JS function that show/hide the dropdown menu form the burger icon-->
-<script>function dropFunction(){document.getElementById("dropMenu").classList.toggle("show");}</script>
+<script type="text/javascript">function dropFunction(){document.getElementById("dropMenu").classList.toggle("show");}</script>
 <!-- The form, input boxes for everything-->
 <form action="action.php" method="POST">
    	<h1>SAP Catering Form</h1> 
@@ -82,7 +92,8 @@
 	<label for="drinks">Drinks(Coffee,Water,Tea,Juice,Pop):</label>
 	   <input type="text" name="drinks">
     <label for="vendor">Vendor:</label>
-        <select name="vendor">
+        <input type="text" list="vendors" placeholder="Other">
+        <datalist name="vendor" id="vendors">
 			<option value="Aroma">Aroma</option>
 			<option value="Burger King">Burger King</option>
 			<option value="Druxys">Druxys</option>
@@ -96,12 +107,14 @@
 			<option value="Nofrills">Nofrills</option>
 			<option value="Soup Nutsy">Soup Nutsy</option>
 			<option value="Tim Hortons">Tim Hortons</option>
-		</select></br>
+		</datalist></br>
 	<label for="food">Food:</label>
 	   <input type="text" name="food">
     <button type="submit">Submit</button>
 </form>
 </div>
+
+
 
 <img src="sap.png" class="sapimage">
 </body>
