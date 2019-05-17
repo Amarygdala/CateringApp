@@ -22,9 +22,9 @@
 		}else if($_GET['error']=="sessiontimeout"){
 			echo "<h4>You have been signed out due to inactivity.</h4>";
 
-}
-}
-	?>
+		}
+	}
+?>
 	<!--Login input boxes that redirect to loginCon.php-->
 	<form action="../loginCon.php" method="post">
 		<input type="text" name="userid" placeholder="Username">
