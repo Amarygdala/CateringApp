@@ -30,7 +30,14 @@ body{
 	float: right;
 	height: 80px;
 	width: 100px;
-
+	margin: 1px;
+	position: relative;
+	user-drag: none; 
+	user-select: none;
+	-moz-user-select: none;
+	-webkit-user-drag: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
 }
 h1{
 	text-align: center;
@@ -74,7 +81,10 @@ button[type=submit]:hover {
   background-color: #45a049;
   cursor: pointer;
 }
-
+::placeholder {
+  color: black;
+  opacity: 1;
+}
 .burger{
   width: 4.1em;
   height: 1.1em;
@@ -84,7 +94,7 @@ button[type=submit]:hover {
   position: relative;
   pointer-events: none;
 }
-.dropbtn{
+.dropbtn,.usericon{
 	background-color: transparent;
 	cursor: pointer;
 	width: 5em;
@@ -92,7 +102,7 @@ button[type=submit]:hover {
 	border: none;
 	pointer-events: visible;
 }
-.menuContent{
+.menuContent,.menuContentUser{
 	display: none;
 	position: absolute;
 	background-color: #f1f1f1;
@@ -100,7 +110,7 @@ button[type=submit]:hover {
 	z-index: 1;
 	pointer-events: visible;
 }
-.menuContent a{
+.menuContent a, .menuContentUser a{
 	color: black;
 	padding: 12px 16px;
 	text-decoration: none;
@@ -108,6 +118,11 @@ button[type=submit]:hover {
 	pointer-events: visible;
 
 }.menuContent a:hover{background-color: #ddd}.show{display:block;}
+.user{
+	float: right;
+	width: 200px;
+	height: 200px;
+}
 /*
 #sidebar{
 	position: fixed;
@@ -198,7 +213,7 @@ sidebar
 	display: inline-block;
 	background: rgba(211,211,211,.5);
 }
-.formclass input[name="delivery_time"], input[name="end_time"],input[name="morning_break"]{
+.formclass input[name="delivery_time"], input[name="end_time"],input[name="morning_break"], input[list="vendors"]{
 /*this is for the right side that gets pushed if margin not 0*/
 	margin: 20px 0 20px 20px;
 }
