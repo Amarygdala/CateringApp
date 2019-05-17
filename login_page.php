@@ -17,9 +17,12 @@
 			echo "<h4>Error: Login with admin account</h4>";
 		}else if ($_GET['error']=="userorpwd") {
 			echo "<h4>Error: You have entered a wrong username or password</h4>";
-		}elseif ($_GET['error']=="emptyfields") {
+		}else if ($_GET['error']=="emptyfields") {
 			echo "<h4>Error: You have left fields empty</h4>";
-		}
+		}else if($_GET['error']=="sessiontimeout"){
+			echo "<h4>You have been signed out due to inactivity.</h4>";
+
+}
 }
 	?>
 	<!--Login input boxes that redirect to loginCon.php-->
