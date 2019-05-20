@@ -1,5 +1,5 @@
 <?php
-    require "reqAdmin.php";
+    require "reqUser.php";
 ?>
 <html>
 <header>
@@ -26,8 +26,29 @@
 <div class="formTOP">
 <!--Input box for deleting records-->
 <form action="" method="POST">
-    <input type= "number" name="ID" placeholder="ID">
+    <input type="number" name="ID" placeholder="ID">
+    <select name="Col">
+        <option value="" disabled selected>Select Column</option>
+        <option value="ID">ID</option>
+        <option value="Date">Date</option>
+        <option value="StartTime">Start Time</option>
+        <option value="EndTime">End Time</option>
+        <option value="Room">Room</option>
+        <option value="DelieveryTime">Delivery Time</option>
+        <option value="MorningBreak">Morning Break</option>
+        <option value="AfternoonBreak">Afternoon Break</option>
+        <option value="Floor">Floor</option>
+        <option value="Attendees">Number of Attendees</option>
+        <option value="Purpose">Purpose(Internal/External)</option>
+        <option value="Restrictions">Restrictions/Notes</option>
+        <option value="HotCold">Hot or Cold</option>
+        <option value="Drinks">Drinks</option>
+        <option value="Vendor">Vendor</option>
+        <option value="Food">Food</option>
+    </select>
+    <input type="text" name="Change" placeholder="Change To">
     <button type="submit">Delete</button>
+    <button type="submit">Change</button>
 </form>
 </div>
 
@@ -39,16 +60,25 @@
     echo "<table id='datatable'>";
     $resultCheck = mysqli_num_rows($result);
     if($resultCheck>0){
-	    echo "  <tr><th>ID</th><th>Date</th><th>Start Time</th><th>End Time</th><th>Room</th><th>Delivery Time</th><th>Morning Break</th><th>Afternoon Break</th><th>Floor</th><th>Number of Attendees</th><th>Purpose</th><th>Restrictions</th><th>Hot or Cold</th><th>Drinks</th><th>Vendor</th><th>Food</th></tr>";
+	    echo "  <tr><th>ID</th><th>Date</th><th>Start Time</th><th>End Time</th><th>Room</th><th>Delivery Time</th><th>Morning Break</th><th>Afternoon Break</th><th>Floor</th><th>Number of Attendees</th><th>Purpose</th><th>Restrictions/Notes</th><th>Hot or Cold</th><th>Drinks</th><th>Vendor</th><th>Food</th></tr>";
 	    while($all =mysqli_fetch_assoc($result) ){
 	        echo "<tr><td>" .$all['ID'] . "</td><td>" .  $all['Date'] . "</td><td>" . $all['StartTime'] . "</td><td>". $all['EndTime'] . "</td><td>". $all['Room'] . "</td><td>". $all['DeliveryTime'] . "</td><td>". $all['MorningBreak'] . "</td><td>" .$all['AfternoonBreak'] . "</td><td>".$all['Floor'] . "</td><td>".$all['Attendees'] . "</td><td>".$all['Purpose'] . "</td><td>".$all['Restrictions'] . "</td><td>".$all['HotCold'] . "</td><td>".$all['Drinks'] . "</td><td>". $all['Vendor'] . "</td><td>". $all['Food'] . "</td></tr>"; 
 }
 echo "</table>"; 
 	}
     //Gets the id for the record the admin wishes to delete.
+    if(!isset($_POST['Col'])){
 	$deleteID=$_POST['ID']??'';
 	$dbDelete = "DELETE FROM `cateringdata` WHERE `cateringdata`.`ID` = $deleteID";//DO NOT CHANGE QUOTATION MARKS. REMOVAL OF `` FOR '' RESULTS IN ERROR.
 	mysqli_query( $connection, $dbDelete); 
+}else if(isset($_POST['ID'])&&isset($_POST['Col'])&&isset($_POST['Change'])){
+    //Only updates integer values..
+    $changeID=$_POST['ID'];
+    $changeCol=$_POST['Col'];
+    $changeTo=$_POST['Change'];
+    $dbChange="UPDATE `cateringdata` SET $changeCol = $changeTo WHERE `cateringdata`.`ID` = $changeID";
+    mysqli_query( $connection, $dbChange); 
+}
 ?>
 </body>
 </html>
