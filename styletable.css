@@ -11,11 +11,8 @@
 	float: left;
  	position: sticky;
 	top: 0;
-	width: 50%;
+	width: 90%;
 	height: 5em;
-}
-form[action=""]{
-
 }
 input,button[type="submit"]{
 	width: 200px;
@@ -25,6 +22,12 @@ input,button[type="submit"]{
 	float: left;
 	position: relative;
 
+}
+select[name="Col"]{
+	width: 200px;
+	float: left;
+	position: relative;
+	display: inline-block;
 }
 .burger{
   width: 4.1em;
