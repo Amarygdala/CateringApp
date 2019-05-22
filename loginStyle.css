@@ -16,7 +16,7 @@ body{
 	margin: 45% 0;
 	padding-left: 50px;
 }
-input,button[type="submit"]{
+input,button[type="submit"],select{
 	display: inline-block;
 	margin: auto;
 	margin-bottom: 20px;
