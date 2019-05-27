@@ -1,4 +1,4 @@
-<?php
+CATERING<?php
     require "reqUser.php";
 ?>
 <!DOCTYPE html>
