@@ -1,8 +1,18 @@
 <?php
     require "reqUser.php";
+if($_SESSION['view']==1){
+    //...
+}
+else if($_SESSION['view']==0){
+    echo "You do not have permission to view this page. Ask the Admin for view privileges.";
+    exit();
+}else{
+    echo "There is something wrong with your privileges, ask the Admin for assistance.";
+    exit();
+}
 ?>
 <html>
-
+<title>Table</title>
 <header>
     <link rel="stylesheet" href="styletable.css">
 </header>

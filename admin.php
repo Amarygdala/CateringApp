@@ -8,11 +8,12 @@
 <form action="../signup_page.php" method="post"> 
 	<button type="submit" >Sign Up</button>
 </form>
-
+<form action="../privileges.php" method="post"> 
+	<button type="submit" >Edit Privileges</button>
+</form>
 <form action="../delete_user.php" method="post">
 	<button type="submit "name="delete-user">Delete Users</button> 
 </form>
-
 <form action="../logout.php" method="post">
 	<button  name="logout-submit">Logout</button> 
 </form>

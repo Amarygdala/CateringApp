@@ -1,7 +1,18 @@
 <?php
     require "reqUser.php";
+    if($_SESSION['delete']==1||$_SESSION['change']==1){
+        //...
+    }
+    else if($_SESSION['delete']==0||$_SESSION['change']==0){
+        echo "You do not have either delete and change privileges.";
+        exit();
+    }else{
+        echo "There is something wrong with your privileges, ask the Admin for assistance.";
+        exit();
+    }
 ?>
 <html>
+<title>Change/Delete Records</title>
 <header>
     <link rel="stylesheet" href="globalStyle.css">
     <link rel="stylesheet" href="styletable.css">
@@ -19,7 +30,7 @@
 </div>
 <div class="burger"></div>
 <div class="burger"></div>
-</div>
+</div>    
 <!--JS function that show/hide the dropdown menu form the burger icon-->
 <script>function dropFunction(){document.getElementById("dropMenu").classList.toggle("show");}</script>
 
@@ -47,8 +58,8 @@
         <option value="Food">Food</option>
     </select>
     <input type="text" name="Change" placeholder="Change To">
-    <button type="submit">Delete</button>
-    <button type="submit">Change</button>
+    <input type="submit" name="deleteRecord" onclick="confirm('Are you sure you want to make changes')" value="Delete">
+    <input type="submit" name="updateRecord" onclick="confirm('Are you sure you want to make changes')" value="Update">
 </form>
 </div>
 
@@ -60,25 +71,33 @@
     echo "<table id='datatable'>";
     $resultCheck = mysqli_num_rows($result);
     if($resultCheck>0){
-	    echo "  <tr><th>ID</th><th>Date</th><th>Start Time</th><th>End Time</th><th>Room</th><th>Delivery Time</th><th>Morning Break</th><th>Afternoon Break</th><th>Floor</th><th>Number of Attendees</th><th>Purpose</th><th>Restrictions/Notes</th><th>Hot or Cold</th><th>Drinks</th><th>Vendor</th><th>Food</th></tr>";
+	    echo "  <tr><th>ID</th><th>Date\n(yyyy-mm-dd)</th><th>Start Time\n(hh:mm:ss)</th><th>End Time</th><th>Room</th><th>Delivery Time</th><th>Morning Break</th><th>Afternoon Break</th><th>Floor</th><th>Number of Attendees</th><th>Purpose</th><th>Restrictions/Notes</th><th>Hot or Cold</th><th>Drinks</th><th>Vendor</th><th>Food</th></tr>";
 	    while($all =mysqli_fetch_assoc($result) ){
 	        echo "<tr><td>" .$all['ID'] . "</td><td>" .  $all['Date'] . "</td><td>" . $all['StartTime'] . "</td><td>". $all['EndTime'] . "</td><td>". $all['Room'] . "</td><td>". $all['DeliveryTime'] . "</td><td>". $all['MorningBreak'] . "</td><td>" .$all['AfternoonBreak'] . "</td><td>".$all['Floor'] . "</td><td>".$all['Attendees'] . "</td><td>".$all['Purpose'] . "</td><td>".$all['Restrictions'] . "</td><td>".$all['HotCold'] . "</td><td>".$all['Drinks'] . "</td><td>". $all['Vendor'] . "</td><td>". $all['Food'] . "</td></tr>"; 
 }
 echo "</table>"; 
 	}
     //Gets the id for the record the admin wishes to delete.
-    if(!isset($_POST['Col'])){
-	$deleteID=$_POST['ID']??'';
-	$dbDelete = "DELETE FROM `cateringdata` WHERE `cateringdata`.`ID` = $deleteID";//DO NOT CHANGE QUOTATION MARKS. REMOVAL OF `` FOR '' RESULTS IN ERROR.
-	mysqli_query( $connection, $dbDelete); 
-}else if(isset($_POST['ID'])&&isset($_POST['Col'])&&isset($_POST['Change'])){
-    //Only updates integer values..
+if(isset($_POST['deleteRecord'])&&$_SESSION['delete']==1){
+    $deleteID=$_POST['ID']??'';
+    $dbDelete = "DELETE FROM `cateringdata` WHERE `cateringdata`.`ID` = $deleteID";//DO NOT CHANGE QUOTATION MARKS.
+}else if(isset($_POST['deleteRecord'])&&$_SESSION['delete']==0){
+    echo "You do not have permission to delete.";
+}
+if(isset($_POST['ID'])&&isset($_POST['Col'])&&isset($_POST['Change'])&&isset($_POST['updateRecord'])&&$_SESSION['change']==1){
     $changeID=$_POST['ID'];
     $changeCol=$_POST['Col'];
     $changeTo=$_POST['Change'];
-    $dbChange="UPDATE `cateringdata` SET $changeCol = $changeTo WHERE `cateringdata`.`ID` = $changeID";
+    $dbChange="UPDATE cateringdata SET $changeCol = '$changeTo' WHERE cateringdata. ID = $changeID";//DO NOT CHANGE QUOTATION MARKS.
     mysqli_query( $connection, $dbChange); 
+}else if(isset($_POST['ID'])&&isset($_POST['Col'])&&isset($_POST['Change'])&&isset($_POST['updateRecord'])&&$_SESSION['change']==0){
+    echo "You do not have permission to change.";
 }
+
+    echo 'Fill out only ID if you wish to delete. Fill out all fields if you wish to update.';
+
 ?>
+
+</script>
 </body>
 </html>
