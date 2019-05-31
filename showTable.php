@@ -1,6 +1,6 @@
 <?php
     require "reqUser.php";
-if($_SESSION['view']==1){
+/*if($_SESSION['view']==1){
     //...
 }
 else if($_SESSION['view']==0){
@@ -9,7 +9,7 @@ else if($_SESSION['view']==0){
 }else{
     echo "There is something wrong with your privileges, ask the Admin for assistance.";
     exit();
-}
+}*/
 ?>
 <html>
 <title>Table</title>
@@ -25,7 +25,7 @@ else if($_SESSION['view']==0){
     <div id="dropMenu" class="menuContent">
         <a href="form.php">Form</a>
         <a href="showTable.php">Show Table</a>
-        <a href="deleteRecord.php">Delete Record</a>
+        <a href="deleteRecord.php">Delete/Change</a>
     </div>
 </div>
 <div class="burger"></div>
@@ -43,9 +43,9 @@ else if($_SESSION['view']==0){
     echo "<table id='datatable'>";
     $resultCheck = mysqli_num_rows($result);
     if($resultCheck>0){
-        echo "  <tr><th>Date</th><th>Start Time</th><th>End Time</th><th>Room</th><th>Delivery Time</th><th>Morning Break</th><th>Afternoon Break</th><th>Floor</th><th>Number of Attendees</th><th>Purpose</th><th>Restrictions/Notes</th><th>Hot or Cold</th><th>Drinks</th><th>Vendor</th><th>Food</th></tr>";
+        echo "  <tr><th>Purpose</th><th>Date\n(yyyy-mm-dd)</th><th>Floor</th><th>Room</th><th>Number of Attendees</th><th>Food</th><th>Delivery Time</th><th>Start Time\n(hh:mm:ss)</th><th>End Time</th><th>Morning Break</th><th>Afternoon Break</th><th>Notes/Dietary Restrictions:</th><th>Meal</th><th>Hot or Cold</th><th>Drinks</th><th>Vendor</th></tr>";
         while($all =mysqli_fetch_assoc($result) ){
-            echo "<tr><td>" . $all['Date'] . "</td><td>" . $all['StartTime'] . "</td><td>". $all['EndTime'] . "</td><td>". $all['Room'] . "</td><td>". $all['DeliveryTime'] . "</td><td>". $all['MorningBreak'] . "</td><td>" .$all['AfternoonBreak'] . "</td><td>".$all['Floor'] . "</td><td>".$all['Attendees'] . "</td><td>".$all['Purpose'] . "</td><td>".$all['Restrictions'] . "</td><td>".$all['HotCold'] . "</td><td>".$all['Drinks'] . "</td><td>". $all['Vendor'] . "</td><td>". $all['Food'] . "</td></tr>"; 
+            echo "<tr><td>".$all['Purpose']. "</td><td>" .  $all['Date'] . "</td><td>".$all['Floor']. "</td><td>". $all['Room']. "</td><td>".$all['Attendees']. "</td><td>". $all['Food']. "</td><td>". $all['DeliveryTime']. "</td><td>" . $all['StartTime'] . "</td><td>". $all['EndTime']   . "</td><td>". $all['MorningBreak'] . "</td><td>" .$all['AfternoonBreak']    . "</td><td>".$all['Restrictions']. "</td><td>".$all['Meal'] . "</td><td>".$all['HotCold'] . "</td><td>".$all['Drinks'] . "</td><td>". $all['Vendor']  . "</td></tr>"; 
 }
     echo "</table>";
     }
