@@ -29,8 +29,7 @@ body{
 .usericon{
 	float: right;
 	height: 80px;
-	width: 100px;
-	margin: 1px;
+	width: 4.1em;
 	position: relative;
 	user-drag: none; 
 	user-select: none;
@@ -118,10 +117,15 @@ button[type=submit]:hover {
 	pointer-events: visible;
 
 }.menuContent a:hover{background-color: #ddd}.show{display:block;}
+
 .user{
 	float: right;
-	width: 200px;
 	height: 200px;
+
+}
+#dropMenuUser{
+	float: right;
+	margin-top: 81px;
 }
 /*
 #sidebar{
@@ -212,8 +216,9 @@ sidebar
 	border-radius: 5px;
 	display: inline-block;
 	background: rgba(211,211,211,.5);
+	margin-right: 13%;
 }
-.formclass input[name="delivery_time"], input[name="end_time"],input[name="morning_break"], input[list="vendors"]{
+.formclass .formRight{
 /*this is for the right side that gets pushed if margin not 0*/
 	margin: 20px 0 20px 20px;
 }
