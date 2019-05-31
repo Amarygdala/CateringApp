@@ -14,7 +14,7 @@
 	width: 90%;
 	height: 5em;
 }
-input,button[type="submit"]{
+input,select[name="Col"]{
 	width: 200px;
 	display: inline-block;
 	border: 1px solid grey;
@@ -23,12 +23,10 @@ input,button[type="submit"]{
 	position: relative;
 
 }
-select[name="Col"]{
-	width: 200px;
-	float: left;
-	position: relative;
-	display: inline-block;
+input[type='submit']{
+	background-color: #4CAF50;
 }
+
 .burger{
   width: 4.1em;
   height: 1.1em;
