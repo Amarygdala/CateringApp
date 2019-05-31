@@ -57,7 +57,7 @@ p[id="dateTime"]{
 
 .outbox{
 	margin: 0;
-	font: 28px arial, sans-serif;
+	font: 20px verdana, sans-serif;
 	border: 2px solid black;
 	width: 1916px;
 	height:936px;
@@ -66,15 +66,14 @@ p[id="dateTime"]{
 }
 .show{
 	border: 2px solid black;
-	width: 70%;
+	width: 75%;
 	height:94%;
 	margin:10px 10px;
 	padding: 15px;
 	float: left;
-	border-radius: 10px;
 }
 .show h2{
-	font-size: 45px;
+	font-size: 30px;
 	margin: 0;
 	z-index: 5;
 
@@ -91,32 +90,39 @@ p[id="dateTime"]{
 	height: 100px;
 	word-wrap: break-word;
 }
+.size1{
+	font: 32px verdana, sans-serif;
+}
+.size1 h2{
+	font-size: 45px;
+	margin: 0;
+	z-index: 5;
 
+}
 #selector{
 	border: 2px solid black;
-	width: 24%;
+	width: 19%;
 	height: 94%;
 	margin: 10px 10px;
 	padding:15px;
-	border-radius: 10px;
 	float: right;
 	overflow: auto;
 }
 .shrtcntt{
-	height: 30%;
+	height: 40%;
 	width: 90%;
-	margin: 10px 10px;
+	margin: 5px;
 	border: 2px solid black;
 	color: black;
 	border-radius: 10px;
 	padding:15px;
-	font-size: 	35px;
+	font-size: 	20px;
 	line-height: 50px;
 	float: right;
 	cursor: pointer;
 }
 .shrtcntt h1{
-	height: 40px;
+	height: 20px;
 	margin:0;
 	font-size: 	1em;
 }
