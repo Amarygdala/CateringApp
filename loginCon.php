@@ -31,9 +31,9 @@ if(isset($_POST['login-submit'])){
 					session_start();
 					$_SESSION['userId'] = $row['id'];
 					$_SESSION['userUid'] = $row['uid'];
-					$_SESSION['view'] = $row['viewpriv'];
-					$_SESSION['delete'] = $row['delprive'];
-					$_SESSION['change'] = $row['changepriv'];
+					//$_SESSION['view'] = $row['viewpriv'];
+					//$_SESSION['delete'] = $row['delprive'];
+					//$_SESSION['change'] = $row['changepriv'];
 					//Redirect to admin page if username is dshop.
 					if($row['uid']=="dshop"){
 						header("Location:../admin.php");
