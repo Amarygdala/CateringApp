@@ -55,36 +55,36 @@
 <form action="action.php" method="POST">
    	<h1>SAP Catering Form</h1> 
 <div class="formclass">
-    <label for="purpose">Purpose of Meeting:</label>
+    <label for="purpose">*Purpose of Meeting:</label>
         <select name="purpose">
             <option value="External">External</option>
             <option value="Internal">Internal</option>
         </select>
-    <label for="date">Date:</label>
+    <label for="date">*Date:</label>
         <input type= "date" name="date" class="formRight" required="required"></br>
-    <label for="floor">Floor:</label>
+    <label for="floor">*Floor:</label>
         <select name="floor">
             <option value="18">18</option>
             <option value="19">19</option>
             <option value="20">20</option>
         </select>
-    <label for="room">Room:</label>
+    <label for="room">*Room:</label>
         <input type= "text" name="room" class="formRight" required="required"></br>
-    <label for="attendees">Number of Attendees:</label>
+    <label for="attendees">*Number of Attendees:</label>
         <input type= "number" name="attendees" required="required">
-    <label for="food">Food:</label>
-       <input type="text" name="food" class="formRight"></br>
-    <label for="delivery_time">Catering Delivery Time:</label>
+    <label for="food">*Food:</label>
+       <input type="text" name="food" class="formRight" required="required"></br>
+    <label for="delivery_time">*Catering Delivery Time:</label>
         <input type="time" name="delivery_time" required="required">
-    <label for="meal">Meal:</label>
+    <label for="meal">*Meal:</label>
     	<select name="meal" class="formRight">
     		<option value="Breakfast">Breakfast</option>
     		<option value="Lunch">Lunch</option>
     		<option value="Dinner">Dinner</option>
     	</select></br>
-    <label for="start_time">Time(Start):</label>
+    <label for="start_time">*Time(Start):</label>
         <input type= "time" name="start_time" required="required">
-    <label for="end_time">Time(End):</label>
+    <label for="end_time">*Time(End):</label>
         <input type= "time" name="end_time" class="formRight" required="required"></br>
     <label for="morning_break" >Morning Break:</label>
         <input type= "time" name="morning_break">
@@ -92,15 +92,15 @@
         <input type= "time" name="afternoon_break" class="formRight"></br>
 	<label for="restrictions">Notes/Dietary Restrictions:</label>
 	   <input type="text" name="restrictions">
-    <label for="hot_cold">Hot/Cold:</label>
+    <label for="hot_cold">*Hot/Cold:</label>
         <select name="hot_cold" class="formRight">
         	<option value="Cold">Cold</option>
         	<option value="Hot">Hot</option>
 		</select></br>
 	<label for="drinks">Drinks(Coffee,Water,Tea,Juice,Pop):</label>
 	   <input type="text" name="drinks">
-    <label for="vendor">Vendor:</label>
-        <input type="text" list="vendors" class="formRight" required="required" placeholder="Other">
+    <label for="vendor">*Vendor:</label>
+        <input type="text" list="vendors" name="vendor" class="formRight" required="required" placeholder="Other">
         <datalist name="vendor" id="vendors">
 			<option value="Aroma">Aroma</option>
 			<option value="Burger King">Burger King</option>
@@ -116,9 +116,9 @@
 			<option value="Soup Nutsy">Soup Nutsy</option>
 			<option value="Tim Hortons">Tim Hortons</option>
 		</datalist></br>
-	<label for="cost_center">Cost Center(4 Digit #):</label>
+	<label for="cost_center">*Cost Center(4 Digit #):</label>
 	 	<input type="number" min="1000" max="9999"  name="cost_center" required="required">
-	<label for="organizer">Organizer:</label>
+	<label for="organizer">*Organizer:</label>
 		<input type="text" name="organizer" class="formRight" required="required"></br>
     <button type="submit" id="submitbutton">Submit</button>
 </form>
