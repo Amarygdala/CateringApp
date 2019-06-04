@@ -13,4 +13,5 @@
 }
 $_SESSION['LAST_ACTIVITY'] = time();
 */
+}
 ?>
