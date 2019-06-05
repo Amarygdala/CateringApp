@@ -108,6 +108,34 @@ p[id="dateTime"]{
 	float: right;
 	overflow: auto;
 }
+#selector::-webkit-scrollbar {
+  width: 36px;
+}
+#selector::-webkit-scrollbar-thumb {
+  background: #e1e1e1;
+  border: 9px outset #c0c0c0;
+  border-radius: 26px;
+}
+#selector::-webkit-scrollbar-thumb:hover {
+  background: #ffffff;
+}
+#selector::-webkit-scrollbar-thumb:active {
+  background: #ffffff;
+}
+#selector::-webkit-scrollbar-track {
+  background: #c0c0c0;
+  border: 7px solid #c0c0c0;
+  border-radius: 26px;
+}
+#selector::-webkit-scrollbar-track:hover {
+  background: #c0c0c0;
+}
+#selector::-webkit-scrollbar-track:active {
+  background: #ffffff;
+}
+#selector::-webkit-scrollbar-corner {
+  background: transparent;
+}
 .shrtcntt{
 	height: 40%;
 	width: 90%;
