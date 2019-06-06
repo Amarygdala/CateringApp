@@ -84,28 +84,33 @@ if(isset($_POST['deleteRecord'])/*&&$_SESSION['delete']==1*/){
     $user=$_SESSION['userUid'];
     $result =mysqli_query($connection,"SELECT * FROM cateringdata WHERE `ID` = $deleteID");
     $all =mysqli_fetch_assoc($result);
-    if($all['Date']>date('Y-m-d',time())){
-        $before=implode("|", $all);
-        $dblog = "INSERT INTO log (User,BeforeChange,Type) VALUES ('$user','$before', 'Delete');";
-        mysqli_query( $connection, $dblog );
+    if($all['ID']!=null){
+	    if($all['Date']>date('Y-m-d',time())){
+	        $before=implode("|", $all);
+	        $dblog = "INSERT INTO log (User,BeforeChange,Type) VALUES ('$user','$before', 'Delete');";
+	        mysqli_query( $connection, $dblog );
 
-        $dbDelete = "DELETE FROM `cateringdata` WHERE `cateringdata`.`ID` = ?";//DO NOT CHANGE QUOTATION MARKS.
-        $stmt = mysqli_stmt_init($connection);
-        if(!mysqli_stmt_prepare($stmt,$dbDelete)){
-            echo "SQL FAIL";
-        }else{
-            mysqli_stmt_bind_param($stmt,"i",$deleteID);
-            mysqli_stmt_execute($stmt);
-            mysqli_stmt_close($stmt);   
-            exit();
-        }
-        
+	        $dbDelete = "DELETE FROM `cateringdata` WHERE `cateringdata`.`ID` = ?";//DO NOT CHANGE QUOTATION MARKS.
+	        $stmt = mysqli_stmt_init($connection);
+	        if(!mysqli_stmt_prepare($stmt,$dbDelete)){
+	            echo "SQL FAIL";
+	        }else{
+	            mysqli_stmt_bind_param($stmt,"i",$deleteID);
+	            mysqli_stmt_execute($stmt);
+	            mysqli_stmt_close($stmt);   
+	            exit();
+	        }
+	        
+	}
+	header("Location:../deleteRecord.php");
+}else{
+	echo "<b>ID ".$deleteID." is not found.</b>";
 }
+
 }/*else if(isset($_POST['deleteRecord'])&&$_SESSION['delete']==0){
     echo "You do not have permission to delete.";
 }*/
 
-//FIX PREPARED STATEMENTS
 if(isset($_POST['ID'])&&isset($_POST['Col'])&&isset($_POST['Change'])&&isset($_POST['updateRecord'])/*&&$_SESSION['change']==1*/){
     $user=$_SESSION['userUid'];
     $changeID=mysqli_real_escape_string($connection, $_POST['ID']);
@@ -131,6 +136,7 @@ if(isset($_POST['ID'])&&isset($_POST['Col'])&&isset($_POST['Change'])&&isset($_P
         $after=implode("|", $all);
         $dblog = "INSERT INTO log (User,BeforeChange,AfterChange,Type) VALUES ('$user','$before','$after','Edit');";
         mysqli_query( $connection, $dblog );
+        header("Location:../deleteRecord.php");
     }
 }/*else if(isset($_POST['ID'])&&isset($_POST['Col'])&&isset($_POST['Change'])&&isset($_POST['updateRecord'])&&$_SESSION['change']==0){
     echo "You do not have permission to change.";
