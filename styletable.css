@@ -5,6 +5,7 @@
   	top: 0;
   	z-index: 5;
   	background-color: white;
+  	width: 100%;
 }
 .formTOP{
 	background-color: white;
@@ -20,11 +21,11 @@ input,select[name="Col"]{
 	border: 1px solid grey;
 	padding: 10px 5px;
 	float: left;
-	position: relative;
 
 }
 input[type='submit']{
 	background-color: #4CAF50;
+	float: left;
 }
 
 .burger{
@@ -34,8 +35,9 @@ input[type='submit']{
   color: white;
   margin: 5px 0;
   pointer-events: none;
-
-
+}
+.wrap{
+	float: left;	
 }
 .dropbtn{
 	background-color: transparent;
