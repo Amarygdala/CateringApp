@@ -109,7 +109,7 @@ if(isset($_POST['ID'])&&isset($_POST['Col'])&&isset($_POST['Change'])&&isset($_P
 <!--Input box for deleting+changing records-->
 <form action="" method="POST">
     <input type="number" name="ID" placeholder="ID">
-    <select name="Col" id="fields" onchange="change()">
+    <select name="Col" id="fields" onchange="change()" required="required">
         <option value="" disabled selected>Select Column</option>
         <option value="Purpose">Purpose(Internal/External)</option>
         <option value="Date">Date</option>
@@ -122,14 +122,80 @@ if(isset($_POST['ID'])&&isset($_POST['Col'])&&isset($_POST['Change'])&&isset($_P
         <option value="EndTime">End Time</option>
         <option value="MorningBreak">Morning Break</option>
         <option value="AfternoonBreak">Afternoon Break</option>
-        <option value="Restrictions">Notes/Dietary Restrictions:</option>
+        <option value="Restrictions">Notes/Dietary Restrictions</option>
         <option value="Meal">Meal</option>
         <option value="HotCold">Hot or Cold</option>
         <option value="Drinks">Drinks</option>
         <option value="Vendor">Vendor</option> 
         <option value="Cost">Cost</option>  
     </select>
-    <input type="text" name="Change" id="changeInput" placeholder="Change To" step="0.01">
+    <input type="text" name="Change" id="changeInput" placeholder="Change To">
+
+    <select name="Change" id="purpose" style="display:none;">
+		<option value="" disabled selected>Select Purpose</option>
+        <option value="External">External</option>
+        <option value="Internal">Internal</option>
+    </select>
+
+    <select name="Change" id="floor" style="display:none;">
+    	<option value="" disabled selected>Select Floor</option>
+        <option value="18">18</option>
+        <option value="19">19</option>
+        <option value="20">20</option>
+    </select>
+
+	<select name="Change" id="meal" style="display:none;">
+		<option value="" disabled selected>Select Meal</option>
+		<option value="Breakfast">Breakfast</option>
+		<option value="Lunch">Lunch</option>
+		<option value="Dinner">Dinner</option>
+	</select>
+
+	<select name="Change" id="hotcold" style="display:none;">
+		<option value="" disabled selected>Select Hot/Cold</option>
+		<option value="Cold">Cold</option>
+		<option value="Hot">Hot</option>
+	</select>
+	<select name="Change" id="vendor" style="display:none;">
+		<option value="" disabled selected>Select Vendor</option>
+		<option value="Aroma">Aroma</option>
+		<option value="Burger King">Burger King</option>
+		<option value="Druxys">Druxys</option>
+		<option value="Eggsmart">Eggsmart</option>
+		<option value="IQ Restaurants">IQ Restaurants</option>
+		<option value="Jimmy the Greek">Jimmy the Greek</option>
+		<option value="La Prep">La Prep</option>
+		<option value="Longos">Longos</option>
+		<option value="McDonalds">McDonalds</option>
+		<option value="McEwans">McEwans</option>
+		<option value="Nofrills">Nofrills</option>
+		<option value="Soup Nutsy">Soup Nutsy</option>
+		<option value="Tim Hortons">Tim Hortons</option>
+	</select>
+    <select name="Change" id="room" style="display:none;"><!--If new rooms are added go to the js function on the bottom-->
+            <option value="" disabled selected>Select Room</option>
+            <option value="Agincourt">Agincourt</option>
+            <option value="Bayview Village">Bayview Village</option>
+            <option value="Black Creek">Black Creek</option>
+            <option value="Bridle Path">Bridle Path</option>
+            <option value="Distillery District">Distillery District</option>
+            <option value="Downsview">Downsview</option>
+            <option value="Guildwood">Guildwood</option>
+            <option value="High Park">High Park</option>
+            <option value="Hoggs Hollow">Hoggs Hollow</option>
+            <option value="Kingsway">Kingsway</option>
+            <option value="Lawrence Heights">Lawrence Heights</option>
+            <option value="Leslieville">Leslieville</option>
+            <option value="Liberty Village">Liberty Village</option>   
+            <option value="Little Italy">Little Italy</option>
+            <option value="Mimico">Mimico</option>
+            <option value="Parkdale">Parkdale</option>
+            <option value="Port Union">Port Union</option>
+            <option value="Rouge">Rouge</option>
+            <option value="The Annex">The Annex</option>
+            <option value="The Beaches">The Beaches</option>
+            <option value="York Mills">York Mills</option>
+        </select>
     <input type="submit" name="deleteRecord" onclick="return confirm('Are you sure you want to make changes?');" value="Delete">
     <input type="submit" name="updateRecord" onclick="return confirm('Are you sure you want to make changes?');" value="Update">
 </form>
@@ -160,20 +226,77 @@ echo "</table>";
 ?>
 
 <script type="text/javascript">
+	    var changeInput = document.getElementById('changeInput');
+        var room = document.getElementById('room');
+        var purpose = document.getElementById('purpose');
+        var floor = document.getElementById('floor');
+        var meal = document.getElementById('meal');
+        var hotcold = document.getElementById('hotcold');
+        var vendor = document.getElementById('vendor');
     function change(){
         var fieldsSelected = document.getElementById('fields').selectedIndex;
+
         console.log(fieldsSelected);
         if(fieldsSelected=="2"){//date
-            document.getElementById('changeInput').type="date";
+        	clear();
+            changeInput.type="date";
+            changeInput.style.display="inline-block";
         }else if(fieldsSelected=="7"||fieldsSelected=="8"||fieldsSelected=="9"||fieldsSelected=="10"||fieldsSelected=="11"){//time
-            document.getElementById('changeInput').type="time";
-        }else if(fieldsSelected=="1"||fieldsSelected=="4"||fieldsSelected=="6"||fieldsSelected=="12"||fieldsSelected=="13"||fieldsSelected=="14"||fieldsSelected=="15"||fieldsSelected=="16"){//free text
-            document.getElementById('changeInput').type="text";
-        }else if(fieldsSelected=="3"||fieldsSelected=="5"||fieldsSelected=="17"){//number
-            document.getElementById('changeInput').type="number";
+        	clear();
+        	changeInput.step = "1";
+            changeInput.type="time";
+            changeInput.style.display="inline-block";
+        }else if(fieldsSelected=="6"||fieldsSelected=="12"||fieldsSelected=="15"){//free text
+            clear();
+            changeInput.type="text";
+            changeInput.style.display="inline-block";
+        }else if(fieldsSelected=="5"){//attendees
+        	clear();
+        	changeInput.step = "1";
+            changeInput.type="number";
+            changeInput.style.display="inline-block";
+        }else if (fieldsSelected=="4"){//Rooms
+        	clear();
+        	room.style.display="inline-block";
+        }else if(fieldsSelected=="17"){//Cost
+        	clear();
+        	changeInput.type="number";
+        	changeInput.step = "0.01";
+            changeInput.style.display="inline-block";
+        }else if(fieldsSelected=="1"){//purpose
+        	clear();
+        	purpose.style.display="inline-block";
+        }else if(fieldsSelected=="3"){//floor
+        	clear();
+        	floor.style.display="inline-block";
+        }else if(fieldsSelected=="13"){//meal
+        	clear();
+        	meal.style.display="inline-block";
+        }else if(fieldsSelected=="14"){//hotcold
+        	clear();
+        	hotcold.style.display="inline-block";
+        }else if(fieldsSelected=="16"){//vendor
+        	clear();
+        	vendor.style.display="inline-block";
         }
-    }
 
+    }
+    	function clear(){
+    		changeInput.value="";
+    		room.value="";
+    		purpose.value="";
+    		floor.value="";
+    		meal.value="";
+    		hotcold.value="";
+    		vendor.value="";
+    		changeInput.style.display="none";
+    		room.style.display="none";
+    		purpose.style.display="none";
+    		floor.style.display="none";
+    		meal.style.display="none";
+    		hotcold.style.display="none";
+    		vendor.style.display="none";
+    	}
 </script>
 
 </body>
