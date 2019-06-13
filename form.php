@@ -7,8 +7,9 @@
 		<meta charset="utf-8">
         <meta name="viewport" content="width=device-width,initial-scale=1.0">
 		<title>SAP Catering</title>
-		<link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="globalStyle.css">
+		<link rel="stylesheet" href="style.css">
+
     </head>
 	<body>
         <!--The user icon-->
@@ -62,14 +63,33 @@
         </select>
     <label for="date">*Date:</label>
         <input type= "date" name="date" class="formRight" required="required"></br>
-    <label for="floor">*Floor:</label>
-        <select name="floor">
-            <option value="18">18</option>
-            <option value="19">19</option>
-            <option value="20">20</option>
-        </select>
     <label for="room">*Room:</label>
-        <input type= "text" name="room" class="formRight" required="required"></br>
+        <select name="room" id="room" onchange="Change()"><!--If new rooms are added go to the js function on the bottom, ALSO UPDATE deleteRecord.php-->
+            <option value="" disabled selected>Select Room</option>
+            <option value="Agincourt">Agincourt</option>
+            <option value="Bayview Village">Bayview Village</option>
+            <option value="Black Creek">Black Creek</option>
+            <option value="Bridle Path">Bridle Path</option>
+            <option value="Distillery District">Distillery District</option>
+            <option value="Downsview">Downsview</option>
+            <option value="Guildwood">Guildwood</option>
+            <option value="High Park">High Park</option>
+            <option value="Hoggs Hollow">Hoggs Hollow</option>
+            <option value="Kingsway">Kingsway</option>
+            <option value="Lawrence Heights">Lawrence Heights</option>
+            <option value="Leslieville">Leslieville</option>
+            <option value="Liberty Village">Liberty Village</option>   
+            <option value="Little Italy">Little Italy</option>
+            <option value="Mimico">Mimico</option>
+            <option value="Parkdale">Parkdale</option>
+            <option value="Port Union">Port Union</option>
+            <option value="Rouge">Rouge</option>
+            <option value="The Annex">The Annex</option>
+            <option value="The Beaches">The Beaches</option>
+            <option value="York Mills">York Mills</option>
+        </select>
+    <label for="floor">*Floor:</label>
+        <input type="number" name="floor" class="formRight" id="floor" readonly></br>
     <label for="attendees">*Number of Attendees:</label>
         <input type= "number" name="attendees" required="required">
     <label for="food">*Food:</label>
@@ -120,6 +140,8 @@
 	 	<input type="number" min="1000" max="9999"  name="cost_center" required="required">
 	<label for="organizer">*Organizer:</label>
 		<input type="text" name="organizer" class="formRight" required="required"></br>
+    <label for="Cost">Cost(Edit after Order)</label>
+        <input type="number" name="Cost" step="0.01">
     <button type="submit" id="submitbutton">Submit</button>
 </form>
 </div>
@@ -132,7 +154,20 @@
 	}
 
 </script>-->
+<script type="text/javascript">//This function changes the floor value according to the room selected. fieldsSelected is the rooms, in order of the forms. If inserting new rooms, redo all the numbers.
+    function Change(){
+        var fieldsSelected = document.getElementById('room').selectedIndex;
+        console.log(fieldsSelected);
+        if(fieldsSelected=="1"||fieldsSelected=="2"||fieldsSelected=="6"||fieldsSelected=="7"||fieldsSelected=="9"||fieldsSelected=="17"||fieldsSelected=="18"||fieldsSelected=="21"){//floor 18
+            document.getElementById('floor').value="18";
+        }else if(fieldsSelected=="3"||fieldsSelected=="4"||fieldsSelected=="8"||fieldsSelected=="10"||fieldsSelected=="11"||fieldsSelected=="14"||fieldsSelected=="15"||fieldsSelected=="16"){//19
+            document.getElementById('floor').value="19";
+        }else if(fieldsSelected=="5"||fieldsSelected=="12"||fieldsSelected=="13"||fieldsSelected=="19"||fieldsSelected=="20"){//20
+            document.getElementById('floor').value="20";
+        }
+    }
 
+</script>
 <img src="sap.png" class="sapimage">
 </body>
 </html>
