@@ -15,7 +15,7 @@
 	width: 90%;
 	height: 5em;
 }
-input,select[name="Col"]{
+input,select[name="Col"],select[name="Change"]{
 	width: 13%;
 	display: inline-block;
 	border: 1px solid grey;
