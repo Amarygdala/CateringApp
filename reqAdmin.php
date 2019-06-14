@@ -3,7 +3,7 @@
 	session_start();
 	//header("refresh: 605"); 
     if (!isset($_SESSION['userUid'])||$_SESSION['userUid']!=="dshop") {
-        header('Location: ../form.php?error=noaccess');
+        header('Location: ../login_page.php?error=noaccess');
         exit();
     /*}
     if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 600)) {
