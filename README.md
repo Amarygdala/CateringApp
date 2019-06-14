@@ -1,5 +1,5 @@
 # Catering App
-
+Web application that changes catering to a digital form.
 # Setup
 Install XAMPP from https://www.apachefriends.org/index.html.
 
