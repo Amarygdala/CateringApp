@@ -42,7 +42,7 @@ h1{
 	text-align: center;
 	border-bottom: 6px solid #FFCC66;
 	padding: 13px 0;
-	color: skyblue;
+	color: black;
 }
 .formclass {
 	width: 80%;
@@ -51,13 +51,13 @@ h1{
 }
 .formclass input,select{
 	width: 100%;
-	border: 1px solid #ccc;
+	border: 1px solid grey;
 	margin: 20px;
 	padding: 14px 15px;
 	box-sizing: border-box;
 	border-radius: 5px;
 	display: inline-block;
-	background: rgba(211,211,211,.5);
+	background: rgba(211,211,211,.1);
 
 }
 .formclass button{
@@ -73,8 +73,11 @@ h1{
 
 }
 .formclass label{
-	color: skyblue;
+	color: black;
 	font-size: 1.2em;
+}
+input[name="floor"]{
+	background-color:darkgrey;
 }
 button[type=submit]:hover {
   background-color: #45a049;
@@ -157,6 +160,9 @@ sidebar
 	body{
 		width: 90%;
 	}
+	input[name="floor"]{
+	background-color:darkgrey;
+}
 }
 @media	only screen and (max-width: 599px){
 	html{
@@ -182,6 +188,9 @@ sidebar
 		right: 50px;
 
 	}
+	input[name="floor"]{
+		background-color:darkgrey;
+}
 
 }
 @media only screen and (min-width: 921px){
@@ -194,28 +203,31 @@ sidebar
 	 	border-radius: 5px;
 	 	transform: translate(3em);
 
-}
+	 }
 .formclass input{
 	width: 35%;
-	border: 1px solid #ccc;
+	border: 1px solid grey;
 	margin: 20px;
 	padding: 14px 15px;
 	box-sizing: border-box;
 	border-radius: 5px;
 	display: inline-block;
-	background: rgba(211,211,211,.5);
+	background: rgba(211,211,211,.1);
 	margin-right: 13%;
 
 }
+input[name="floor"]{
+	background-color:darkgrey;
+}
 .formclass select{
 	width: 35%;
-	border: 1px solid #ccc;
+	border: 1px solid grey;
 	margin: 20px;
 	padding: 14px 15px;
 	box-sizing: border-box;
 	border-radius: 5px;
 	display: inline-block;
-	background: rgba(211,211,211,.5);
+	background: rgba(211,211,211,.1);
 	margin-right: 13%;
 }
 .formclass .formRight{
@@ -236,7 +248,7 @@ sidebar
 
 }
 .formclass label{
-	color: skyblue;
+	color: black;
 	font-size: 1.2em;
 	position: absolute;
 }
