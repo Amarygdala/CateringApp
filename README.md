@@ -40,3 +40,4 @@ Then do the exact same with the loginsystem.sql file.
 
 If you now type in localhost in the address bar it should redirect you to localhost/login_page.php.
 
+Username will be 'dshop' the password will be 'dshop123!'. This will redirect to the admin page where you can add/delete users. Logins from normal users will redirect to the form instead.
